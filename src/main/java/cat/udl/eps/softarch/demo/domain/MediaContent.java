@@ -14,16 +14,15 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class MediaContent {
 
-    @Id
-    @NotBlank
-    private String url;
+	@Id
+	@NotBlank
+	private String url;
 
-    @NotBlank
+	@NotBlank
 	@Column(name = "media_type")
-    private String type;
+	private String type;
 
-    @ManyToOne
-    @JsonIdentityReference(alwaysAsId = true)
-    private Edition edition;
-
+	@ManyToOne
+	@JsonIdentityReference(alwaysAsId = true)
+	private Edition edition;
 }
