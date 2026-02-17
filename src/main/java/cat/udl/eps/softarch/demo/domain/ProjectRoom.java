@@ -22,6 +22,6 @@ public class ProjectRoom {
 
 	@OneToOne
 	@JoinColumn(name = "managed_by_judge_id")
-	private Judge managedByJudgeId;
+	private Judge managedByJudge;
 
 }

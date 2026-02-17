@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 @RepositoryRestResource
-public interface JudgeRepository extends CrudRepository<Judge, Integer>, PagingAndSortingRepository<Judge, Integer> {
+public interface JudgeRepository extends CrudRepository<Judge, Long>, PagingAndSortingRepository<Judge, Long> {
 
 	List<Judge> findAll();
 
