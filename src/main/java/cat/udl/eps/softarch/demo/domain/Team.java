@@ -27,6 +27,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@ToString
 @Table(name = "team")
 public class Team extends UriEntity<String> {
 

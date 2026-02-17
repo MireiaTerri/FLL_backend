@@ -175,6 +175,7 @@ public class TeamSteps {
 
 	@Then("I should find {int} team in the list")
 	public void verifySearchResults(int count) {
+		assertNotNull(searchResults, "Search results is null. Did you perform a search?");
 		assertEquals(count, searchResults.size());
 	}
 }
