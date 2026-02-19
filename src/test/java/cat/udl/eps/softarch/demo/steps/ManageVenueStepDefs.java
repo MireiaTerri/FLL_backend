@@ -72,7 +72,6 @@ public class ManageVenueStepDefs {
 	public void iUpdateTheVenueWithNameToCity(String name, String newCity) throws Throwable {
 		Venue existingVenue = findVenueByName(name);
 		Venue venue = new Venue();
-		venue.setId(existingVenue.getId());
 		venue.setName(name);
 		venue.setCity(newCity);
 
