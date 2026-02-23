@@ -20,8 +20,8 @@ Template for a Spring Boot project including Spring REST, HATEOAS, JPA, etc. Add
 | Access multimedia gallery (photos and videos) of the event | Manage Project Rooms and assign Judges to specific rooms          |
 | Post comments to foster community (Authenticated users)    | View specific assessment sheets filled out by Judges              |
 | View Team profiles and statistics                          | Generate Matches ensuring a team never plays the same rival twice |
-| -                                                          | Manage Competition Tables and Rounds                              |
-| -                                                          | Validate Volunteer roles (prevent Judge/Referee conflicts)        |
+|                                                            | Manage Competition Tables and Rounds                              |
+|                                                            | Validate Volunteer roles (prevent Judge/Referee conflicts)        |
 
 ## Entities Model
 
