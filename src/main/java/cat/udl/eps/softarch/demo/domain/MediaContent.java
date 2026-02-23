@@ -1,6 +1,8 @@
 package cat.udl.eps.softarch.demo.domain;
 
+import org.jspecify.annotations.Nullable;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -10,18 +12,23 @@ import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class MediaContent {
+@EqualsAndHashCode(callSuper = true)
+public class MediaContent extends UriEntity<String> {
 
-    @Id
-    @NotBlank
-    private String url;
+	@Id
+	@NotBlank
+	private String url;
 
-    @NotBlank
-    private String type;
+	@NotBlank
+	@Column(name = "media_type")
+	private String type;
 
-    @ManyToOne
-    @JsonIdentityReference(alwaysAsId = true)
-    private Edition edition;
+	@ManyToOne
+	@JsonIdentityReference(alwaysAsId = true)
+	private Edition edition;
 
+	@Override
+	public @Nullable String getId() {
+		return url;
+	}
 }
