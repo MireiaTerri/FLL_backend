@@ -162,7 +162,7 @@ async function handleIssueEdited({ github, context, core }) {
 
 	// 3) Remove old story points labels + invalid label
 	for (const l of (issue.labels || []).map((x) => x.name)) {
-		if (ALL_STORY_POINTS_LABELS.includes(l)) {
+		if (ALL_STORY_POINTS_LABELS.includes(l) && l !== spLabel) {
 			await removeLabelSafe(github, context, l);
 		}
 	}
