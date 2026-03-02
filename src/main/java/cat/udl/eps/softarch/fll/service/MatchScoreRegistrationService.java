@@ -58,7 +58,7 @@ public class MatchScoreRegistrationService {
 				buildMatchResult(match, matchTeamB, scoreByTeam.get(matchTeamB.getId())));
 
 		try {
-			matchResultRepository.saveAll(matchResults);
+			matchResultRepository.saveAllAndFlush(matchResults);
 		} catch (DataIntegrityViolationException exception) {
 			throw new RegistrationException(
 					ErrorCode.RESULT_ALREADY_EXISTS,
