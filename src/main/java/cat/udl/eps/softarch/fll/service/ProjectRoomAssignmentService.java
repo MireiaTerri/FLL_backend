@@ -8,6 +8,7 @@ import cat.udl.eps.softarch.fll.exception.RoomAssignmentException;
 import cat.udl.eps.softarch.fll.repository.ProjectRoomRepository;
 import cat.udl.eps.softarch.fll.repository.JudgeRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProjectRoomAssignmentService {
@@ -20,6 +21,7 @@ public class ProjectRoomAssignmentService {
         this.judgeRepository = judgeRepository;
     }
 
+	@Transactional
     public AssignJudgeResponse assignJudge(AssignJudgeRequest request) {
         
         ProjectRoom room = projectRoomRepository.findById(request.roomId())

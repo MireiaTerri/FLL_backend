@@ -14,7 +14,7 @@ import cat.udl.eps.softarch.fll.exception.RoomAssignmentException;
 import cat.udl.eps.softarch.fll.service.ProjectRoomAssignmentService;
 
 @RestController
-@RequestMapping("/api/project-rooms")
+@RequestMapping("/project-rooms")
 public class ProjectRoomController {
     
 	private final ProjectRoomAssignmentService projectRoomAssignmentService;
