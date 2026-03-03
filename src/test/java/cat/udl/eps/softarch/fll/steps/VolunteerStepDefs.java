@@ -180,10 +180,7 @@ public class VolunteerStepDefs {
 
 	@Given("a team named {string} from city {string} exists for floater assignment")
 	public void createTeamForFloaterAssignment(String name, String city) {
-		currentTeam = Team.create(name, "Barcelona", 0, "category");
-		currentTeam.setCity(city);
-		currentTeam.setFoundationYear(2020);
-		currentTeam.setCategory("Challenge");
+		currentTeam = Team.create(name, city, 2020, "Challenge");
 		currentTeam = teamRepository.save(currentTeam);
 	}
 

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class AwardValidationTest {
 
 	private final Edition validEdition = Edition.create(2024, "Lleida Arena", "FLL Season");
-	private final Team validTeam = Team.create("Winners", "Barcelona", 0, "category");
+	private final Team validTeam = Team.create("Winners", "Barcelona", 2000, "category");
 
 	@Test
 	void validConstruction() {

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TeamMemberValidationTest {
 
-	private final Team validTeam = Team.create("TestTeam", "Barcelona", 0, "category");
+	private final Team validTeam = Team.create("TestTeam", "Barcelona", 2000, "category");
 
 	@Test
 	void validConstruction() {

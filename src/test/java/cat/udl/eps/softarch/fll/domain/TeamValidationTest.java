@@ -16,7 +16,12 @@ class TeamValidationTest {
 
 	@Test
 	void singleNameConstruction() {
-		assertDoesNotThrow(() -> Team.create("Robotics", "Barcelona", 0, "category"));
+		assertDoesNotThrow(() -> Team.create("Robotics", "Barcelona", 2000, "category"));
+	}
+
+	@Test
+	void invalidMinFoundationYearConstruction() {
+		assertThrows(DomainValidationException.class, () -> Team.create("Robotics", "Barcelona", 0, "category"));
 	}
 
 	@Nested
@@ -31,7 +36,7 @@ class TeamValidationTest {
 
 		@Test
 		void nullNameSingleArgThrows() {
-			assertThrows(DomainValidationException.class, () -> Team.create(null, "Barcelona", 0, "category"));
+			assertThrows(DomainValidationException.class, () -> Team.create(null, "Barcelona", 2000, "category"));
 		}
 	}
 

@@ -42,10 +42,7 @@ public class TeamSteps {
 
 	@Given("I create a team named {string} from {string}")
 	public void iCreateATeam(String name, String city) {
-		currentTeam = Team.create(name, "Barcelona", 0, "category");
-		currentTeam.setCity(city);
-		currentTeam.setFoundationYear(2000);
-		currentTeam.setCategory("Challenge");
+		currentTeam = Team.create(name, city, 2000, "Challenge");
 	}
 
 	@Given("I add a member named {string} with role {string}")

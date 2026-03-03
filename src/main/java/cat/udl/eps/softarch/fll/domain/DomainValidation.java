@@ -5,9 +5,10 @@ import java.util.regex.Pattern;
 public final class DomainValidation {
 
 	private static final Pattern EMAIL_PATTERN =
-			Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+		Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
 
-	private DomainValidation() {}
+	private DomainValidation() {
+	}
 
 	public static void requireNonNullId(Object id, String fieldName) {
 		if (id == null) {
@@ -34,6 +35,15 @@ public final class DomainValidation {
 		}
 		if (value < 0) {
 			throw new DomainValidationException(fieldName + " must not be negative");
+		}
+	}
+
+	public static void requireMin(Integer value, Integer minValue, String fieldName) {
+		if (value == null) {
+			throw new DomainValidationException(fieldName + " must not be null");
+		}
+		if (value < minValue) {
+			throw new DomainValidationException(fieldName + " must not be less than " + minValue);
 		}
 	}
 

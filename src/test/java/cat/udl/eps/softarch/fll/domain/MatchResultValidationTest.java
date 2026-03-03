@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class MatchResultValidationTest {
 
 	private final Match validMatch = new Match();
-	private final Team validTeam = Team.create("ValidTeam", "Barcelona", 0, "category");
+	private final Team validTeam = Team.create("ValidTeam", "Barcelona", 2000, "category");
 
 	@Test
 	void validConstruction() {
