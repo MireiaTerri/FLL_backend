@@ -28,9 +28,6 @@ public class Floater extends Volunteer {
 	@ToString.Exclude
 	private Set<Team> assistedTeams = new HashSet<>();
 
-	public Floater() {
-	}
-
 	public static Floater create(String name, String emailAddress, String phoneNumber, String studentCode) {
 		DomainValidation.requireNonBlank(studentCode, "studentCode");
 

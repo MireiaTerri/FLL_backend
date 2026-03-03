@@ -39,9 +39,6 @@ public class Coach extends UriEntity<Integer> {
 	@ToString.Exclude
 	private Set<Team> teams = new HashSet<>();
 
-	public Coach() {
-	}
-
 	public static Coach create(String name, String emailAddress) {
 		DomainValidation.requireNonBlank(name, "name");
 		DomainValidation.requireValidEmail(emailAddress, "emailAddress");

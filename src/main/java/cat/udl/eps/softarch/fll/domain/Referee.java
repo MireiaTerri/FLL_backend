@@ -12,21 +12,17 @@ import jakarta.persistence.Table;
 @Table(name = "referees")
 public class Referee extends Volunteer {
 
-	public Referee() {}
+	private boolean expert;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "supervises_table_id")
+	@JsonBackReference("table-referees")
+	private CompetitionTable supervisesTable;
 
 	public static Referee create(String name, String emailAddress, String phoneNumber) {
 		Referee referee = new Referee();
 		referee.initFields(name, emailAddress, phoneNumber);
 		return referee;
 	}
-
-	private boolean expert;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "supervises_table_id")
-	@JsonBackReference("table-referees")
-	private CompetitionTable supervisesTable;
-
 
 	public boolean isExpert() {
 		return expert;

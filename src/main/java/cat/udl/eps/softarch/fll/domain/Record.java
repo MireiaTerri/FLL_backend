@@ -37,9 +37,6 @@ public class Record extends UriEntity<Long> {
 	@JsonIdentityReference(alwaysAsId = true)
 	private User owner;
 
-	public Record() {
-	}
-
 	public static Record create(String name) {
 		DomainValidation.requireNonBlank(name, "name");
 
