@@ -1,6 +1,9 @@
 package cat.udl.eps.softarch.fll.repository;
 
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -8,6 +11,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import cat.udl.eps.softarch.fll.domain.Match;
 import cat.udl.eps.softarch.fll.domain.MatchResult;
 import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.repository.projection.LeaderboardRowProjection;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -37,6 +41,24 @@ public interface MatchResultRepository extends JpaRepository<MatchResult, Long> 
 	@Operation(summary = "Find results by team",
 			description = "Returns a list of results achieved by a specific team.")
 	List<MatchResult> findByTeam(@Param("team") Team team);
+
+	@Query(value = """
+			select
+				mr.team.id as teamId,
+				mr.team.name as teamName,
+				sum(mr.score) as totalScore,
+				count(mr) as matchesPlayed
+			from MatchResult mr
+			where mr.match.round.edition.id = :editionId
+			group by mr.team.id, mr.team.name
+			order by sum(mr.score) desc, count(mr) desc, mr.team.name asc
+			""",
+			countQuery = """
+					select count(distinct mr.team.id)
+					from MatchResult mr
+					where mr.match.round.edition.id = :editionId
+					""")
+	Page<LeaderboardRowProjection> findLeaderboardByEditionId(@Param("editionId") Long editionId, Pageable pageable);
 
 	boolean existsByMatch(@Param("match") Match match);
 
