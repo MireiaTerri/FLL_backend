@@ -49,13 +49,13 @@ public class Round extends UriEntity<Long> {
 			return;
 		}
 
-		if (matches.stream().anyMatch(m -> m == match)) {
+		if (matches.contains(match)) {
 			return;
 		}
 
 		Round previousRound = match.getRound();
 		if (previousRound != null && previousRound != this) {
-			previousRound.getMatches().remove(match);
+			previousRound.removeMatch(match);
 		}
 
 		matches.add(match);
@@ -67,7 +67,7 @@ public class Round extends UriEntity<Long> {
 			return;
 		}
 
-		if (matches.removeIf(m -> m == match)) {
+		if (matches.remove(match)) {
 			match.setRound(null);
 		}
 	}
