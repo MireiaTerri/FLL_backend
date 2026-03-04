@@ -6,12 +6,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import java.net.URI;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.web.util.UriUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -63,7 +63,7 @@ public class ManageScientificProjectStepDefs {
 			return response.getHeader("Location");
 		}
 		if (response.getStatus() == 409) {
-			return "http://localhost/teams/" + URLEncoder.encode(teamName, StandardCharsets.UTF_8);
+			return "http://localhost/teams/" + UriUtils.encodePathSegment(teamName, StandardCharsets.UTF_8);
 		}
 		throw new RuntimeException("Unable to create dependency team: " + response.getContentAsString());
 	}
