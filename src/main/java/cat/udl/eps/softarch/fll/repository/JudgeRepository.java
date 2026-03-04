@@ -18,7 +18,7 @@ public interface JudgeRepository extends CrudRepository<Judge, Long>, PagingAndS
 
 	@Operation(summary = "Search judges by name",
 			description = "Returns a list of Judges whose names contain the specified text (case-insensitive).")
-	@Query("select j from Judge j where lower(j.name) like lower(concat('%', :text, '%'))")
-	List<Judge> findByNameContaining(@Param("text") String text);
+	@Query("select j from Judge j where lower(j.name) like lower(concat('%', :name, '%'))")
+	List<Judge> findByNameContaining(@Param("name") String name);
 
 }

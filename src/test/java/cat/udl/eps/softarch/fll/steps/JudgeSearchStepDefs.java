@@ -45,7 +45,7 @@ public class JudgeSearchStepDefs {
 	@When("I search judges by name containing {string}")
 	public void iSearchJudgesByNameContaining(String name) throws Exception {
 		stepDefs.result = stepDefs.mockMvc.perform(get("/judges/search/findByNameContaining")
-				.param("text", name)
+				.param("name", name)
 				.accept(MediaType.APPLICATION_JSON))
 				.andDo(print());
 	}
