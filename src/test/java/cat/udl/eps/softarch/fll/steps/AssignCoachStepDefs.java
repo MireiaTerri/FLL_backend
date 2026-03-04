@@ -6,6 +6,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
@@ -26,6 +28,9 @@ public class AssignCoachStepDefs {
 	private CoachRepository coachRepository;
 	private ObjectMapper mapper;
 
+	// Mapa para guardar teamName -> teamId (como String)
+	private Map<String, String> teamIdMap = new HashMap<>();
+
 	public AssignCoachStepDefs(StepDefs stepDefs,
 							   TeamRepository teamRepository,
 							   CoachRepository coachRepository) {
@@ -40,14 +45,14 @@ public class AssignCoachStepDefs {
 		stepDefs.result = null;
 	}
 
-	private ResultActions performAssignCoach(String teamName, Integer coachId) throws Exception {
+	private ResultActions performAssignCoach(String teamId, Integer coachId) throws Exception {
 		return stepDefs.mockMvc.perform(
 			post("/teams/assign-coach")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content("{\"teamId\":\"" + teamName + "\",\"coachId\":" + coachId + "}")
+				.content("{\"teamId\":\"" + teamId + "\",\"coachId\":" + coachId + "}")
 				.characterEncoding(StandardCharsets.UTF_8)
 				.accept(MediaType.APPLICATION_JSON)
-				.with(user("testuser").roles("COACH")) // <--- autenticación simulada
+				.with(user("testuser").roles("COACH"))
 		);
 	}
 
@@ -60,6 +65,7 @@ public class AssignCoachStepDefs {
 		team.setCategory("FLL");
 		team.setEducationalCenter("School");
 		teamRepository.save(team);
+		teamIdMap.put(teamName, team.getId()); // Guardamos el ID como String
 	}
 
 	@Given("a coach with id {int} exists")
@@ -73,12 +79,14 @@ public class AssignCoachStepDefs {
 
 	@Given("coach {int} is assigned to team {string}")
 	public void coachAssignedToTeam(Integer coachId, String teamName) throws Exception {
-		performAssignCoach(teamName, coachId).andExpect(status().isOk());
+		String teamId = teamIdMap.get(teamName);
+		performAssignCoach(teamId, coachId).andExpect(status().isOk());
 	}
 
 	@When("I assign coach {int} to team {string}")
 	public void assignCoach(Integer coachId, String teamName) throws Exception {
-		stepDefs.result = performAssignCoach(teamName, coachId);
+		String teamId = teamIdMap.get(teamName);
+		stepDefs.result = performAssignCoach(teamId, coachId);
 	}
 
 	@Then("the assignment is successful")
@@ -89,7 +97,8 @@ public class AssignCoachStepDefs {
 
 	@Then("the error {word} is returned")
 	public void errorReturned(String error) throws Exception {
-		stepDefs.result.andExpect(status().isBadRequest())
+		int expectedStatus = "COACH_ALREADY_ASSIGNED".equals(error) ? 409 : 400;
+		stepDefs.result.andExpect(status().is(expectedStatus))
 			.andExpect(jsonPath("$.error").value(error));
 	}
 }

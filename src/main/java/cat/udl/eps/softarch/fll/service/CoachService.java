@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.persistence.LockModeType;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.NoSuchElementException;
 
 @Service
@@ -19,28 +22,23 @@ public class CoachService {
 	private final TeamRepository teamRepository;
 	private final CoachRepository coachRepository;
 
+	@PersistenceContext
+	private EntityManager entityManager;
+
 	public AssignCoachResponse assignCoach(String teamId, Integer coachId) {
 
-		Team team = teamRepository.findById(teamId)
-			.orElseThrow(() -> new NoSuchElementException("TEAM_NOT_FOUND"));
-
-		Coach coach = coachRepository.findById(coachId)
-			.orElseThrow(() -> new NoSuchElementException("COACH_NOT_FOUND"));
-
-		if (team.getTrainedBy().contains(coach)) {
-			throw new IllegalStateException("COACH_ALREADY_ASSIGNED");
+		Team team = entityManager.find(Team.class, teamId, LockModeType.PESSIMISTIC_WRITE);
+		if (team == null) {
+			throw new NoSuchElementException("TEAM_NOT_FOUND");
+		}
+		Coach coach = entityManager.find(Coach.class, coachId, LockModeType.PESSIMISTIC_WRITE);
+		if (coach == null) {
+			throw new NoSuchElementException("COACH_NOT_FOUND");
 		}
 
-		if (team.getTrainedBy().size() >= 2) {
-			throw new IllegalStateException("MAX_COACHES_PER_TEAM_REACHED");
-		}
 
-		if (coach.getTeams().size() >= 2) {
-			throw new IllegalStateException("MAX_TEAMS_PER_COACH_REACHED");
-		}
 
 		team.addCoach(coach);
-
 		teamRepository.save(team);
 
 		return new AssignCoachResponse(teamId, coachId, "ASSIGNED");
