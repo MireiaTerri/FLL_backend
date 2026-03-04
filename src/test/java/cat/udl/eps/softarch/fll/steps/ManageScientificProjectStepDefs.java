@@ -90,7 +90,7 @@ public class ManageScientificProjectStepDefs {
 	@When("I create a new scientific project with score {int} and comments {string} and invalid team")
 	public void iCreateScientificProjectWithInvalidTeam(Integer score, String comments) throws Exception {
 		latestScientificProjectUri = null;
-		String invalidTeamUri = "http://localhost/teams/NonExistingTeam";
+		String invalidTeamUri = "http://localhost/teams/non-existing-\" + ";
 		stepDefs.result = performCreateProject(score, comments, invalidTeamUri, true);
 		if (stepDefs.result.andReturn().getResponse().getStatus() == 201) {
 			latestScientificProjectUri = stepDefs.result.andReturn().getResponse().getHeader("Location");
