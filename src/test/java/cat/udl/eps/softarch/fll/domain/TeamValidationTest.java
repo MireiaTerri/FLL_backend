@@ -18,20 +18,18 @@ class TeamValidationTest {
 		assertThrows(DomainValidationException.class, () -> Team.create("Robotics", "Barcelona", 0, "category"));
 	}
 
-	@Nested
-	class NullName {
+	@Test
+	void nullNameThrows() {
+		DomainValidationException ex = assertThrows(DomainValidationException.class,
+			() -> Team.create(null, "Lleida", 2020, "Challenge"));
+		assertEquals("name must not be null", ex.getMessage());
+	}
 
-		@Test
-		void nullNameThrows() {
-			DomainValidationException ex = assertThrows(DomainValidationException.class,
-				() -> Team.create(null, "Lleida", 2020, "Challenge"));
-			assertEquals("name must not be null", ex.getMessage());
-		}
-
-		@Test
-		void nullNameSingleArgThrows() {
-			assertThrows(DomainValidationException.class, () -> Team.create(null, "Barcelona", 2000, "category"));
-		}
+	@Test
+	void nullCityThrows() {
+		DomainValidationException ex = assertThrows(DomainValidationException.class,
+			() -> Team.create("Robotics", null, 2000, "category"));
+		assertEquals("city must not be null", ex.getMessage());
 	}
 
 	@Nested

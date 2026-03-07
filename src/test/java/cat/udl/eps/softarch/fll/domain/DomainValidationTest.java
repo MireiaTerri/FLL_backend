@@ -19,20 +19,23 @@ class DomainValidationTest {
 
 		@Test
 		void rejectsNull() {
-			assertThrows(DomainValidationException.class,
+			DomainValidationException ex = assertThrows(DomainValidationException.class,
 				() -> DomainValidation.requireNonBlank(null, "field"));
+			assertEquals("field must not be null", ex.getMessage());
 		}
 
 		@Test
 		void rejectsBlank() {
-			assertThrows(DomainValidationException.class,
+			DomainValidationException ex = assertThrows(DomainValidationException.class,
 				() -> DomainValidation.requireNonBlank("   ", "field"));
+			assertEquals("field must not be blank", ex.getMessage());
 		}
 
 		@Test
 		void rejectsEmpty() {
-			assertThrows(DomainValidationException.class,
+			DomainValidationException ex = assertThrows(DomainValidationException.class,
 				() -> DomainValidation.requireNonBlank("", "field"));
+			assertEquals("field must not be blank", ex.getMessage());
 		}
 	}
 
@@ -167,7 +170,8 @@ class DomainValidationTest {
 
 		@Test
 		void acceptsDateInThePast() {
-			assertDoesNotThrow(() -> DomainValidation.requirePast(LocalDate.now().minusDays(1), "birthDate"));
+			LocalDate yesterday = LocalDate.now().minusDays(1);
+			assertDoesNotThrow(() -> DomainValidation.requirePast(yesterday, "birthDate"));
 		}
 
 		@Test
@@ -178,15 +182,17 @@ class DomainValidationTest {
 
 		@Test
 		void rejectsToday() {
+			LocalDate today = LocalDate.now();
 			DomainValidationException ex = assertThrows(DomainValidationException.class,
-				() -> DomainValidation.requirePast(LocalDate.now(), "birthDate"));
+				() -> DomainValidation.requirePast(today, "birthDate"));
 			assertEquals("birthDate must be in the past", ex.getMessage());
 		}
 
 		@Test
 		void rejectsFutureDate() {
+			LocalDate tomorrow = LocalDate.now().plusDays(1);
 			assertThrows(DomainValidationException.class,
-				() -> DomainValidation.requirePast(LocalDate.now().plusDays(1), "birthDate"));
+				() -> DomainValidation.requirePast(tomorrow, "birthDate"));
 		}
 	}
 

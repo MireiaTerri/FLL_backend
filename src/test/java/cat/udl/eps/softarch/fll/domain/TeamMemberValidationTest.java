@@ -12,13 +12,15 @@ class TeamMemberValidationTest {
 
 	@Test
 	void validConstruction() {
-		assertDoesNotThrow(() -> TeamMember.create("Alice", "Player", LocalDate.ofYearDay(0, 1), validTeam));
+		LocalDate birthDate = LocalDate.ofYearDay(0, 1);
+		assertDoesNotThrow(() -> TeamMember.create("Alice", "Player", birthDate, validTeam));
 	}
 
 	@Test
 	void futureDateThrows() {
+		LocalDate tomorrow = LocalDate.now().plusDays(1);
 		assertThrows(DomainValidationException.class,
-			() -> TeamMember.create("Alice", "Player", LocalDate.now().plusDays(1), validTeam));
+			() -> TeamMember.create("Alice", "Player", tomorrow, validTeam));
 	}
 
 	@Nested
@@ -26,20 +28,23 @@ class TeamMemberValidationTest {
 
 		@Test
 		void nullNameThrows() {
+			LocalDate birthDate = LocalDate.ofYearDay(0, 1);
 			assertThrows(DomainValidationException.class,
-				() -> TeamMember.create(null, "Player", LocalDate.ofYearDay(0, 1), validTeam));
+				() -> TeamMember.create(null, "Player", birthDate, validTeam));
 		}
 
 		@Test
 		void blankNameThrows() {
+			LocalDate birthDate = LocalDate.ofYearDay(0, 1);
 			assertThrows(DomainValidationException.class,
-				() -> TeamMember.create("  ", "Player", LocalDate.ofYearDay(0, 1), validTeam));
+				() -> TeamMember.create("  ", "Player", birthDate, validTeam));
 		}
 
 		@Test
 		void blankRoleThrows() {
+			LocalDate birthDate = LocalDate.ofYearDay(1, 1);
 			assertThrows(DomainValidationException.class,
-				() -> TeamMember.create("Alice", "", LocalDate.ofYearDay(0, 1), validTeam));
+				() -> TeamMember.create("Alice", "", birthDate, validTeam));
 		}
 	}
 
@@ -48,8 +53,9 @@ class TeamMemberValidationTest {
 
 		@Test
 		void nullTeamThrows() {
+			LocalDate birthDate = LocalDate.ofYearDay(0, 1);
 			assertThrows(DomainValidationException.class,
-				() -> TeamMember.create("Alice", "Player", LocalDate.ofYearDay(0, 1), null));
+				() -> TeamMember.create("Alice", "Player", birthDate, null));
 		}
 	}
 }

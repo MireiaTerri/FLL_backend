@@ -39,8 +39,8 @@ public class Record extends UriEntity<Long> {
 	public static Record create(String name) {
 		DomainValidation.requireNonBlank(name, "name");
 
-		Record record = new Record();
-		record.name = name;
-		return record;
+		Record newRecord = new Record();
+		newRecord.name = name;
+		return newRecord;
 	}
 }

@@ -25,7 +25,8 @@ class TeamTest {
 		for (int i = 0; i < 10; i++) {
 			TeamMember.create("Member " + i, "role" + i, LocalDate.of(2000, 1, 1), team);
 		}
-		assertThrows(IllegalStateException.class, () -> TeamMember.create("ExtraMember", "role" + 10, LocalDate.of(2000, 0, 0), team));
+		LocalDate birthDate = LocalDate.of(2000, 1, 1);
+		assertThrows(IllegalStateException.class, () -> TeamMember.create("ExtraMember", "role" + 10, birthDate, team));
 	}
 
 	@Test
