@@ -1,5 +1,6 @@
 package cat.udl.eps.softarch.fll.steps;
 
+import cat.udl.eps.softarch.fll.domain.DomainValidationException;
 import cat.udl.eps.softarch.fll.domain.Floater;
 import cat.udl.eps.softarch.fll.domain.Team;
 import cat.udl.eps.softarch.fll.repository.FloaterRepository;
@@ -9,10 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -45,11 +44,7 @@ public class VolunteerStepDefs {
 
 	@When("I create a floater with name {string}, email {string}, phone {string} and student code {string}")
 	public void createFloater(String name, String email, String phone, String studentCode) {
-		currentFloater = new Floater();
-		currentFloater.setName(name);
-		currentFloater.setEmailAddress(email);
-		currentFloater.setPhoneNumber(phone);
-		currentFloater.setStudentCode(studentCode);
+		currentFloater = Floater.create(name, email, phone, studentCode);
 	}
 
 	@When("I save the floater")
@@ -87,11 +82,7 @@ public class VolunteerStepDefs {
 	@When("I try to create a floater with name {string} and email {string} and phone {string} and student code {string}")
 	public void tryCreateInvalidFloater(String name, String email, String phone, String studentCode) {
 		try {
-			Floater floater = new Floater();
-			floater.setName(name);
-			floater.setEmailAddress(email);
-			floater.setPhoneNumber(phone);
-			floater.setStudentCode(studentCode);
+			Floater floater = Floater.create(name, email, phone, studentCode);
 			floaterRepository.save(floater);
 		} catch (Exception e) {
 			lastException = e;
@@ -109,7 +100,8 @@ public class VolunteerStepDefs {
 		Throwable current = ex;
 		while (current != null) {
 			if (current instanceof ConstraintViolationException
-				|| current instanceof org.springframework.dao.DataIntegrityViolationException) {
+				|| current instanceof org.springframework.dao.DataIntegrityViolationException
+				|| current instanceof DomainValidationException) {
 				return true;
 			}
 			current = current.getCause();

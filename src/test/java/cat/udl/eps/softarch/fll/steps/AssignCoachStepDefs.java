@@ -1,35 +1,33 @@
 package cat.udl.eps.softarch.fll.steps;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.ResultActions;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import cat.udl.eps.softarch.fll.domain.Coach;
 import cat.udl.eps.softarch.fll.domain.Team;
 import cat.udl.eps.softarch.fll.repository.CoachRepository;
 import cat.udl.eps.softarch.fll.repository.TeamRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.ResultActions;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class AssignCoachStepDefs {
 
-	private StepDefs stepDefs;
-	private TeamRepository teamRepository;
-	private CoachRepository coachRepository;
-	private ObjectMapper mapper;
+	private final StepDefs stepDefs;
+	private final TeamRepository teamRepository;
+	private final CoachRepository coachRepository;
+	private final ObjectMapper mapper;
 
-	private Map<String, String> teamIdMap = new HashMap<>();
-	private Map<Integer, Integer> coachIdMap = new HashMap<>();
+	private final Map<String, String> teamIdMap = new HashMap<>();
+	private final Map<Integer, Integer> coachIdMap = new HashMap<>();
 
 	public AssignCoachStepDefs(StepDefs stepDefs,
 							   TeamRepository teamRepository,
@@ -59,11 +57,7 @@ public class AssignCoachStepDefs {
 
 	@Given("a team {string} exists")
 	public void aTeamExists(String teamName) {
-		Team team = new Team();
-		team.setName(teamName);
-		team.setCity("Lleida");
-		team.setFoundationYear(2020);
-		team.setCategory("FLL");
+		Team team = Team.create(teamName, "Lleida", 2020, "FLL");
 		team.setEducationalCenter("School");
 		teamRepository.save(team);
 		teamIdMap.put(teamName, team.getId());
@@ -102,8 +96,8 @@ public class AssignCoachStepDefs {
 	public void errorReturned(String error) throws Exception {
 		int expectedStatus = switch (error) {
 			case "COACH_ALREADY_ASSIGNED",
-				"MAX_COACHES_PER_TEAM_REACHED",
-				"MAX_TEAMS_PER_COACH_REACHED" -> 409;
+				 "MAX_COACHES_PER_TEAM_REACHED",
+				 "MAX_TEAMS_PER_COACH_REACHED" -> 409;
 			default -> 400;
 		};
 
