@@ -57,10 +57,7 @@ public class EditionVolunteerStepDefs {
 		targetReferee.setEdition(targetEdition);
 		refereeRepository.save(targetReferee);
 
-		Judge targetJudge = new Judge();
-		targetJudge.setName("Target Judge " + suffix);
-		targetJudge.setEmailAddress("target.judge." + suffix + "@example.com");
-		targetJudge.setPhoneNumber("222222222");
+		Judge targetJudge = Judge.create("Target Judge " + suffix, "target.judge." + suffix + "@example.com", "222222222");
 		targetJudge.setEdition(targetEdition);
 		judgeRepository.save(targetJudge);
 
@@ -74,10 +71,7 @@ public class EditionVolunteerStepDefs {
 		refereeRepository.save(otherReferee);
 
 		otherJudgeName = "Other Judge " + suffix;
-		Judge otherJudge = new Judge();
-		otherJudge.setName(otherJudgeName);
-		otherJudge.setEmailAddress("other.judge." + suffix + "@example.com");
-		otherJudge.setPhoneNumber("555555555");
+		Judge otherJudge = Judge.create(otherJudgeName, "other.judge." + suffix + "@example.com", "555555555");
 		otherJudge.setEdition(otherEdition);
 		judgeRepository.save(otherJudge);
 

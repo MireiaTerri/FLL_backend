@@ -44,11 +44,8 @@ class EditionVolunteerServiceTest {
 		Referee referee = Referee.create("Ref One", "ref1@example.com", "111111111");
 		referee.setId(1L);
 
-		Judge judge = new Judge();
+		Judge judge = Judge.create("Judge One", "judge1@example.com", "222222222");
 		judge.setId(2L);
-		judge.setName("Judge One");
-		judge.setEmailAddress("judge1@example.com");
-		judge.setPhoneNumber("222222222");
 
 		Floater floater = Floater.create("Floater One", "floater1@example.com", "333333333", "STU-1");
 		floater.setId(3L);
