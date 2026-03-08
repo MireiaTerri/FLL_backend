@@ -28,15 +28,14 @@ public class MatchSearchService {
 
 		validateTimeRange(startFrom, endTo);
 
-		Sort sort = pageable.getSort().isSorted() ? pageable.getSort() : Sort.by("startTime").ascending();
-		if (sort.getOrderFor("id") == null) {
-			sort = sort.and(Sort.by("id").ascending());
+		if (pageable.getSort().isUnsorted()) {
+			pageable = PageRequest.of(
+				pageable.getPageNumber(),
+				pageable.getPageSize(),
+				Sort.by("startTime").ascending()
+					.and(Sort.by("id").ascending())
+			);
 		}
-		pageable = PageRequest.of(
-			pageable.getPageNumber(),
-			pageable.getPageSize(),
-			sort
-		);
 
 		Specification<Match> spec =
 			Specification.where(MatchSpecifications.timeOverlap(startFrom, endTo))

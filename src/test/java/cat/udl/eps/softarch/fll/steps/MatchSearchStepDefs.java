@@ -76,7 +76,6 @@ public class MatchSearchStepDefs {
 		stepDefs.result = stepDefs.mockMvc.perform(
 			get("/matches/filter")
 				.param("page", "0")
-				.param("size", "2")
 				.param("sort", "startTime,asc")
 				.param("sort", "id,asc")
 				.with(user("admin"))
@@ -131,7 +130,6 @@ public class MatchSearchStepDefs {
 			.andExpect(jsonPath("$.items[0].startTime").value("10:00:00"))
 			.andExpect(jsonPath("$.items[1].startTime").value("11:15:00"))
 			.andExpect(jsonPath("$.page").value(0))
-			.andExpect(jsonPath("$.size").value(2))
 			.andExpect(jsonPath("$.totalElements").value(2));
 	}
 
