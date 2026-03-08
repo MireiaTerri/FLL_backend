@@ -90,7 +90,7 @@ public class ManageScientificProjectStepDefs {
 
 	private String createEdition() throws Exception {
 		JSONObject editionJson = new JSONObject();
-		editionJson.put("year", 2026 + Math.abs(UUID.randomUUID().hashCode() % 100));
+		editionJson.put("year", 2026 + Math.floorMod(UUID.randomUUID().hashCode(), 100));
 		editionJson.put("venueName", "Venue-" + UUID.randomUUID().toString().substring(0, 8));
 		editionJson.put("description", "Edition for scientific project tests");
 
