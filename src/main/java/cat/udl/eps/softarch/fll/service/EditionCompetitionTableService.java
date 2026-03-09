@@ -3,13 +3,13 @@ package cat.udl.eps.softarch.fll.service;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cat.udl.eps.softarch.fll.controller.dto.EditionCompetitionTableResponse;
 import cat.udl.eps.softarch.fll.controller.dto.EditionTableMatchResponse;
 import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.exception.EditionCompetitionTableNotFoundException;
 import cat.udl.eps.softarch.fll.repository.EditionRepository;
 import cat.udl.eps.softarch.fll.repository.MatchRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class EditionCompetitionTableService {
 	@Transactional(readOnly = true)
 	public List<EditionCompetitionTableResponse> getTablesByEdition(Long editionId) {
 		if (!editionRepository.existsById(editionId)) {
-			throw new NoSuchElementException("EDITION_NOT_FOUND");
+			throw new EditionCompetitionTableNotFoundException();
 		}
 
 		Map<String, List<EditionTableMatchResponse>> tables = new LinkedHashMap<>();

@@ -6,13 +6,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import java.util.List;
-import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import cat.udl.eps.softarch.fll.controller.dto.EditionCompetitionTableResponse;
 import cat.udl.eps.softarch.fll.controller.dto.EditionTableMatchResponse;
+import cat.udl.eps.softarch.fll.exception.EditionCompetitionTableNotFoundException;
 import cat.udl.eps.softarch.fll.service.EditionCompetitionTableService;
 
 class EditionCompetitionTableControllerTest {
@@ -58,7 +58,7 @@ class EditionCompetitionTableControllerTest {
 	@Test
 	void getCompetitionTablesReturnsNotFoundWhenEditionDoesNotExist() throws Exception {
 		when(editionCompetitionTableService.getTablesByEdition(99L))
-				.thenThrow(new NoSuchElementException("EDITION_NOT_FOUND"));
+				.thenThrow(new EditionCompetitionTableNotFoundException());
 
 		mockMvc.perform(get("/editions/99/tables"))
 				.andExpect(status().isNotFound())

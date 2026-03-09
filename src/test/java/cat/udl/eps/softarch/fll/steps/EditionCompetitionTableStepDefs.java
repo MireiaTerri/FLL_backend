@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import cat.udl.eps.softarch.fll.domain.CompetitionTable;
 import cat.udl.eps.softarch.fll.domain.Edition;
 import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.domain.MatchState;
 import cat.udl.eps.softarch.fll.domain.Round;
 import cat.udl.eps.softarch.fll.repository.CompetitionTableRepository;
 import cat.udl.eps.softarch.fll.repository.EditionRepository;
@@ -81,6 +82,27 @@ public class EditionCompetitionTableStepDefs {
 		createRound(edition, 3001);
 	}
 
+	@Given("an edition competition table dataset with non-scheduled matches exists")
+	public void anEditionCompetitionTableDatasetWithNonScheduledMatchesExists() {
+		matchRepository.deleteAll();
+		roundRepository.deleteAll();
+		competitionTableRepository.deleteAll();
+		editionRepository.deleteAll();
+
+		Edition targetEdition = createEdition("Target tables");
+		targetEditionId = targetEdition.getId();
+
+		Round targetRound = createRound(targetEdition, 1001);
+		CompetitionTable scheduledTable = createTable("Table-A-" + shortSuffix());
+		CompetitionTable nonScheduledTable = createTable("Table-C-" + shortSuffix());
+		targetEditionTableIdentifier = scheduledTable.getId();
+		otherEditionTableIdentifier = nonScheduledTable.getId();
+
+		createMatch(targetRound, scheduledTable, "11:00", "11:20");
+		createMatch(targetRound, nonScheduledTable, "12:00", "12:20", MatchState.FINISHED);
+		createMatch(targetRound, scheduledTable, "12:30", "12:50", MatchState.IN_PROGRESS);
+	}
+
 	@When("I request competition tables for the target edition")
 	public void iRequestCompetitionTablesForTheTargetEdition() throws Exception {
 		stepDefs.result = stepDefs.mockMvc.perform(get("/editions/{editionId}/tables", targetEditionId)
@@ -149,11 +171,16 @@ public class EditionCompetitionTableStepDefs {
 	}
 
 	private void createMatch(Round round, CompetitionTable table, String startTime, String endTime) {
+		createMatch(round, table, startTime, endTime, MatchState.SCHEDULED);
+	}
+
+	private void createMatch(Round round, CompetitionTable table, String startTime, String endTime, MatchState state) {
 		Match match = new Match();
 		match.setRound(round);
 		match.setCompetitionTable(table);
 		match.setStartTime(LocalTime.parse(startTime));
 		match.setEndTime(LocalTime.parse(endTime));
+		match.setState(state);
 		matchRepository.save(match);
 	}
 
