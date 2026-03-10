@@ -1,21 +1,23 @@
 package cat.udl.eps.softarch.fll.handler;
 
-import java.util.Map;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import cat.udl.eps.softarch.fll.controller.dto.ApiErrorResponse;
 import cat.udl.eps.softarch.fll.exception.EditionTeamRegistrationException;
 
 @RestControllerAdvice
 public class EditionTeamRegistrationExceptionHandler {
 
 	@ExceptionHandler(EditionTeamRegistrationException.class)
-	public ResponseEntity<Map<String, String>> handleRegistrationException(EditionTeamRegistrationException e) {
+	public ResponseEntity<ApiErrorResponse> handleRegistrationException(
+			EditionTeamRegistrationException e,
+			HttpServletRequest request) {
 		HttpStatus status = resolveStatus(e.getError());
-		return ResponseEntity.status(status).body(Map.of(
-				"error", e.getError(),
-				"message", e.getMessage()));
+		return ResponseEntity.status(status)
+				.body(ApiErrorResponse.of(e.getError(), e.getMessage(), request.getRequestURI()));
 	}
 
 	private HttpStatus resolveStatus(String error) {
@@ -27,6 +29,5 @@ public class EditionTeamRegistrationExceptionHandler {
 		};
 	}
 }
-
 
 

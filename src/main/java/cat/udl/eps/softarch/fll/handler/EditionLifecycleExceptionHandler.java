@@ -1,21 +1,23 @@
 package cat.udl.eps.softarch.fll.handler;
 
-import java.util.Map;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import cat.udl.eps.softarch.fll.controller.dto.ApiErrorResponse;
 import cat.udl.eps.softarch.fll.exception.EditionLifecycleException;
 
 @RestControllerAdvice
 public class EditionLifecycleExceptionHandler {
 
 	@ExceptionHandler(EditionLifecycleException.class)
-	public ResponseEntity<Map<String, String>> handleEditionLifecycleException(EditionLifecycleException exception) {
+	public ResponseEntity<ApiErrorResponse> handleEditionLifecycleException(
+			EditionLifecycleException exception,
+			HttpServletRequest request) {
 		HttpStatus status = resolveStatus(exception.getError());
-		return ResponseEntity.status(status).body(Map.of(
-				"error", exception.getError(),
-				"message", exception.getMessage()));
+		return ResponseEntity.status(status)
+				.body(ApiErrorResponse.of(exception.getError(), exception.getMessage(), request.getRequestURI()));
 	}
 
 	private HttpStatus resolveStatus(String error) {

@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.controller;
 
 import java.util.Arrays;
-import java.util.Map;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import cat.udl.eps.softarch.fll.controller.dto.ApiErrorResponse;
 import cat.udl.eps.softarch.fll.domain.EditionState;
 import cat.udl.eps.softarch.fll.exception.EditionLifecycleException;
 import cat.udl.eps.softarch.fll.service.EditionLifecycleService;
@@ -44,10 +45,14 @@ public class EditionLifecycleController {
 	}
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
-	public ResponseEntity<Map<String, String>> handleUnreadablePayload(HttpMessageNotReadableException exception) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
-				"error", "INVALID_EDITION_STATE_REQUEST",
-				"message", buildInvalidPayloadMessage(exception)));
+	public ResponseEntity<ApiErrorResponse> handleUnreadablePayload(
+			HttpMessageNotReadableException exception,
+			HttpServletRequest request) {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(ApiErrorResponse.of(
+						"INVALID_EDITION_STATE_REQUEST",
+						buildInvalidPayloadMessage(exception),
+						request.getRequestURI()));
 	}
 
 	private String buildInvalidPayloadMessage(HttpMessageNotReadableException exception) {

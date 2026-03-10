@@ -56,7 +56,9 @@ class EditionLifecycleControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"state\":\"OPEN\"}"))
 				.andExpect(status().isConflict())
-				.andExpect(jsonPath("$.error").value("INVALID_EDITION_STATE_TRANSITION"));
+				.andExpect(jsonPath("$.error").value("INVALID_EDITION_STATE_TRANSITION"))
+				.andExpect(jsonPath("$.timestamp").isNotEmpty())
+				.andExpect(jsonPath("$.path").value("/editions/5/state"));
 	}
 
 	@Test
@@ -68,7 +70,9 @@ class EditionLifecycleControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{\"state\":\"OPEN\"}"))
 				.andExpect(status().isNotFound())
-				.andExpect(jsonPath("$.error").value("EDITION_NOT_FOUND"));
+				.andExpect(jsonPath("$.error").value("EDITION_NOT_FOUND"))
+				.andExpect(jsonPath("$.timestamp").isNotEmpty())
+				.andExpect(jsonPath("$.path").value("/editions/5/state"));
 	}
 
 	@Test
@@ -77,7 +81,9 @@ class EditionLifecycleControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("{}"))
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.error").value("INVALID_EDITION_STATE_REQUEST"));
+				.andExpect(jsonPath("$.error").value("INVALID_EDITION_STATE_REQUEST"))
+				.andExpect(jsonPath("$.timestamp").isNotEmpty())
+				.andExpect(jsonPath("$.path").value("/editions/5/state"));
 	}
 
 	@Test
@@ -87,7 +93,9 @@ class EditionLifecycleControllerTest {
 				.content("{\"state\":\"INVALID\"}"))
 				.andExpect(status().isBadRequest())
 				.andExpect(jsonPath("$.error").value("INVALID_EDITION_STATE_REQUEST"))
-				.andExpect(jsonPath("$.message").value("Invalid state value. Allowed values: [DRAFT, OPEN, CLOSED]"));
+				.andExpect(jsonPath("$.message").value("Invalid state value. Allowed values: [DRAFT, OPEN, CLOSED]"))
+				.andExpect(jsonPath("$.timestamp").isNotEmpty())
+				.andExpect(jsonPath("$.path").value("/editions/5/state"));
 	}
 
 	@Test
