@@ -9,6 +9,9 @@ import cat.udl.eps.softarch.fll.domain.TeamMember;
 
 @RepositoryRestResource(path = "teamMembers")
 public interface TeamMemberRepository extends CrudRepository<TeamMember, Long>, PagingAndSortingRepository<TeamMember, Long> {
+	
 	List<TeamMember> findByName(@Param("name") String name);
+	
+	List<TeamMember> findByRole(@Param("role") String role);
 }
 

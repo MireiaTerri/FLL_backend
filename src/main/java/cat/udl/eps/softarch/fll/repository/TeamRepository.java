@@ -12,6 +12,7 @@ import cat.udl.eps.softarch.fll.domain.Team;
 
 @RepositoryRestResource(path = "teams")
 public interface TeamRepository extends CrudRepository<Team, String>, PagingAndSortingRepository<Team, String> {
+	
 	List<Team> findByCity(@Param("city") String city);
 
 	List<Team> findByFoundationYearGreaterThan(@Param("year") int year);
