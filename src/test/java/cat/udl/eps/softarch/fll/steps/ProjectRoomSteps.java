@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.random.RandomGenerator;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -87,7 +86,7 @@ public class ProjectRoomSteps {
 		stepDefs.result = stepDefs.mockMvc.perform(post("/project-rooms/assign-judge")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(jsonPayload)
-			.with(user("admin").roles("ADMIN")));
+			.with(AuthenticationStepDefs.authenticate()));
 	}
 
 	@Then("the response status should be {int}")
@@ -104,8 +103,8 @@ public class ProjectRoomSteps {
 	@Then("the response error should be {string}")
 	public void the_response_error_should_be(String expectedError) throws Throwable {
 		stepDefs.result.andExpect(jsonPath("$.error").value(expectedError))
-				.andExpect(jsonPath("$.message").exists())
-				.andExpect(jsonPath("$.timestamp").exists())
-				.andExpect(jsonPath("$.path").value("/project-rooms/assign-judge"));
+			.andExpect(jsonPath("$.message").exists())
+			.andExpect(jsonPath("$.timestamp").exists())
+			.andExpect(jsonPath("$.path").value("/project-rooms/assign-judge"));
 	}
 }

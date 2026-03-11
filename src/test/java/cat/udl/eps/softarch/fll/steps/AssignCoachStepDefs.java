@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -48,7 +47,7 @@ public class AssignCoachStepDefs {
 				.content("{\"teamId\":\"" + teamId + "\",\"coachId\":" + coachId + "}")
 				.characterEncoding(StandardCharsets.UTF_8)
 				.accept(MediaType.APPLICATION_JSON)
-				.with(user("testuser").roles("COACH"))
+				.with(AuthenticationStepDefs.authenticate())
 		);
 	}
 

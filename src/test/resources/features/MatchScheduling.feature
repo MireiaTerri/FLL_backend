@@ -1,7 +1,7 @@
 Feature: Validate match time consistency and prevent table time overlaps
 
 	Background:
-		Given I login as "admin" with password "admin"
+		Given I login as "admin" with password "password"
 		And a competition table "Table-01" exists
 		And a valid match exists on "Table-01" from "10:00:00" to "11:00:00"
 

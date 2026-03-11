@@ -1,16 +1,5 @@
 package cat.udl.eps.softarch.fll.steps;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-
-import java.nio.charset.StandardCharsets;
-import java.time.LocalTime;
-
-import org.springframework.http.MediaType;
-import org.springframework.transaction.annotation.Transactional;
-
 import cat.udl.eps.softarch.fll.domain.CompetitionTable;
 import cat.udl.eps.softarch.fll.domain.Match;
 import cat.udl.eps.softarch.fll.repository.MatchRepository;
@@ -18,6 +7,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import jakarta.persistence.EntityManager;
+import org.springframework.http.MediaType;
+import org.springframework.transaction.annotation.Transactional;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalTime;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class MatchScheduleStepsDefs {
 
@@ -56,16 +52,16 @@ public class MatchScheduleStepsDefs {
 	@When("I request to create a match on {string} from {string} to {string}")
 	public void i_request_to_create_a_match(String tableId, String startTime, String endTime) throws Throwable {
 		String jsonPayload = String.format(
-				"{\"startTime\": \"%s\", \"endTime\": \"%s\", \"competitionTable\": \"/competitionTables/%s\"}",
-				startTime, endTime, tableId
+			"{\"startTime\": \"%s\", \"endTime\": \"%s\", \"competitionTable\": \"/competitionTables/%s\"}",
+			startTime, endTime, tableId
 		);
 
 		stepDefs.result = stepDefs.mockMvc.perform(post("/matches")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(jsonPayload)
-				.characterEncoding(StandardCharsets.UTF_8)
-				.accept(MediaType.APPLICATION_JSON)
-				.with(user("admin").roles("ADMIN")));
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(jsonPayload)
+			.characterEncoding(StandardCharsets.UTF_8)
+			.accept(MediaType.APPLICATION_JSON)
+			.with(AuthenticationStepDefs.authenticate()));
 	}
 
 	@Then("the match scheduling response status should be {int}")

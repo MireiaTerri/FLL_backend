@@ -1,7 +1,5 @@
 package cat.udl.eps.softarch.fll.config;
 
-import java.util.Arrays;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -27,20 +27,17 @@ public class WebSecurityConfig {
 	protected SecurityFilterChain securityFilterChain(HttpSecurity http) {
 		http.authorizeHttpRequests(auth -> auth
 				.requestMatchers(HttpMethod.GET, "/identity").authenticated()
-				.requestMatchers(HttpMethod.GET, "/users").authenticated()
-				.requestMatchers(HttpMethod.GET, "/editions/*/volunteers").authenticated()
 				.requestMatchers(HttpMethod.POST, "/users").anonymous()
-				.requestMatchers(HttpMethod.POST, "/matchResults/register").authenticated()
 				.requestMatchers(HttpMethod.POST, "/users/*").denyAll()
-				.requestMatchers(HttpMethod.POST, "/*/*").authenticated()
-				.requestMatchers(HttpMethod.PUT, "/*/*").authenticated()
-				.requestMatchers(HttpMethod.PATCH, "/*/*").authenticated()
-				.requestMatchers(HttpMethod.DELETE, "/*/*").authenticated()
+				.requestMatchers(HttpMethod.POST, "/**").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.PUT, "/**").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.PATCH, "/**").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
 				.anyRequest().permitAll())
-				.csrf(csrf -> csrf.disable())
-				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
-				.httpBasic(httpBasic -> httpBasic.realmName("demo"));
+			.csrf(csrf -> csrf.disable())
+			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+			.httpBasic(httpBasic -> httpBasic.realmName("demo"));
 		return http.build();
 	}
 

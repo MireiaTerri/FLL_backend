@@ -1,5 +1,8 @@
 Feature: Assign a Judge to a ProjectRoom
 
+	Background:
+		Given I login as "admin" with password "password"
+
 	# --- CASOS D'ÈXIT ---
 
 	Scenario: Successful assignment of a Manager
