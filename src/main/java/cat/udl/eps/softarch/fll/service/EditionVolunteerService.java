@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cat.udl.eps.softarch.fll.controller.dto.EditionVolunteersResponse;
 import cat.udl.eps.softarch.fll.controller.dto.VolunteerSummaryResponse;
-import cat.udl.eps.softarch.fll.domain.Volunteer;
+import cat.udl.eps.softarch.fll.domain.volunteer.Volunteer;
 import cat.udl.eps.softarch.fll.exception.EditionVolunteerException;
 import cat.udl.eps.softarch.fll.repository.EditionRepository;
 import cat.udl.eps.softarch.fll.repository.FloaterRepository;

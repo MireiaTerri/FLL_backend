@@ -2,6 +2,7 @@ package cat.udl.eps.softarch.fll.domain;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

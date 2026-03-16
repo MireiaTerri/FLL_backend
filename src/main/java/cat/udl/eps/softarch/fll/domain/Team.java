@@ -1,5 +1,6 @@
 package cat.udl.eps.softarch.fll.domain;
 
+import cat.udl.eps.softarch.fll.domain.volunteer.Floater;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

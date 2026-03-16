@@ -2,10 +2,10 @@ package cat.udl.eps.softarch.fll.service;
 
 import cat.udl.eps.softarch.fll.controller.dto.BatchMatchAssignmentItemRequest;
 import cat.udl.eps.softarch.fll.controller.dto.BatchMatchAssignmentResponse;
-import cat.udl.eps.softarch.fll.domain.Floater;
+import cat.udl.eps.softarch.fll.domain.volunteer.Floater;
 import cat.udl.eps.softarch.fll.domain.Match;
 import cat.udl.eps.softarch.fll.domain.MatchState;
-import cat.udl.eps.softarch.fll.domain.Referee;
+import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import cat.udl.eps.softarch.fll.domain.Round;
 import cat.udl.eps.softarch.fll.exception.MatchAssignmentErrorCode;
 import cat.udl.eps.softarch.fll.exception.MatchAssignmentException;

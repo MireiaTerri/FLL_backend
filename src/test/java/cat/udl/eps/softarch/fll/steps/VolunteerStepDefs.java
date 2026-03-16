@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.steps;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.Floater;
+import cat.udl.eps.softarch.fll.domain.volunteer.Floater;
 import cat.udl.eps.softarch.fll.domain.Team;
 import cat.udl.eps.softarch.fll.repository.FloaterRepository;
 import cat.udl.eps.softarch.fll.repository.TeamRepository;

@@ -1,5 +1,8 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.volunteer;
 
+import cat.udl.eps.softarch.fll.domain.DomainValidation;
+import cat.udl.eps.softarch.fll.domain.Edition;
+import cat.udl.eps.softarch.fll.domain.UriEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -67,4 +70,3 @@ public abstract class Volunteer extends UriEntity<Long> {
 		this.phoneNumber = phoneNumber;
 	}
 }
-

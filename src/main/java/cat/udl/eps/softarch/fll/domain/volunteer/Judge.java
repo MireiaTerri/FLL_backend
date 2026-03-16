@@ -1,6 +1,7 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.volunteer;
 
 
+import cat.udl.eps.softarch.fll.domain.ProjectRoom;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
