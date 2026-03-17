@@ -13,6 +13,7 @@ import cat.udl.eps.softarch.fll.domain.Match;
 import cat.udl.eps.softarch.fll.repository.MatchRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -43,7 +44,7 @@ public class AwardAndMatchStepDefs {
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(editionJson.toString())
 			.characterEncoding(StandardCharsets.UTF_8)
-			.with(AuthenticationStepDefs.authenticate())).andReturn().getResponse();
+			.with(httpBasic("admin", "password"))).andReturn().getResponse();
 
 		if (edRes.getStatus() != 201 || edRes.getHeader("Location") == null) {
 			throw new RuntimeException("ERROR CREANT EDITION: " + edRes.getContentAsString());
@@ -60,7 +61,7 @@ public class AwardAndMatchStepDefs {
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(teamJson.toString())
 			.characterEncoding(StandardCharsets.UTF_8)
-			.with(AuthenticationStepDefs.authenticate())).andReturn().getResponse();
+			.with(httpBasic("admin", "password"))).andReturn().getResponse();
 
 		if (teamRes.getStatus() != 201 || teamRes.getHeader("Location") == null) {
 			throw new RuntimeException("ERROR CREANT TEAM: " + teamRes.getContentAsString());
@@ -151,7 +152,7 @@ public class AwardAndMatchStepDefs {
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(editionJson.toString())
 			.characterEncoding(StandardCharsets.UTF_8)
-			.with(AuthenticationStepDefs.authenticate())).andReturn().getResponse();
+			.with(httpBasic("admin", "password"))).andReturn().getResponse();
 			if (edRes.getStatus() != 201 || edRes.getHeader("Location") == null) {
 				throw new RuntimeException("Failed to create edition: " + edRes.getContentAsString());
 			}
@@ -167,7 +168,7 @@ public class AwardAndMatchStepDefs {
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(teamJson.toString())
 			.characterEncoding(StandardCharsets.UTF_8)
-			.with(AuthenticationStepDefs.authenticate())).andReturn().getResponse();
+			.with(httpBasic("admin", "password"))).andReturn().getResponse();
 			if (teamRes.getStatus() != 201 || teamRes.getHeader("Location") == null) {
 				throw new RuntimeException("Failed to create team: " + teamRes.getContentAsString());
 			}
@@ -182,7 +183,7 @@ public class AwardAndMatchStepDefs {
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(awardJson.toString())
 			.characterEncoding(StandardCharsets.UTF_8)
-			.with(AuthenticationStepDefs.authenticate()));
+			.with(httpBasic("admin", "password")));
 	}
 
 	@When("I search awards by winner name containing {string}")

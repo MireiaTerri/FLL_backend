@@ -1,7 +1,7 @@
 Feature: Search Venue by partial name
 
   Background:
-    Given I login as "user" with password "password"
+    Given I login as "admin" with password "password"
     And the volunteer system is empty
     Given a venue exists with name "Sports Center Barcelona" and city "Barcelona"
 

@@ -14,7 +14,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 import cat.udl.eps.softarch.fll.domain.CompetitionTable;
 import cat.udl.eps.softarch.fll.domain.Match;
-import cat.udl.eps.softarch.fll.domain.Referee;
+import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import cat.udl.eps.softarch.fll.domain.Team;
 import jakarta.persistence.LockModeType;
 

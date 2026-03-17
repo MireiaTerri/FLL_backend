@@ -3,7 +3,6 @@ package cat.udl.eps.softarch.fll.steps;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.hamcrest.Matchers.hasSize;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -31,7 +30,7 @@ public class SearchVenueStepDefs {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(stepDefs.mapper.writeValueAsString(body))
                 .characterEncoding(StandardCharsets.UTF_8)
-                .with(user("user").roles("USER")))
+                .with(AuthenticationStepDefs.authenticate()))
                 .andExpect(status().isCreated());
     }
 
@@ -39,7 +38,7 @@ public class SearchVenueStepDefs {
     public void i_search_for_a_venue_by_partial_name(String searchName) throws Exception {
         stepDefs.result = stepDefs.mockMvc.perform(get("/venues/search/findByNameContaining")
                 .param("name", searchName)
-                .with(user("user").roles("USER")));
+                .with(AuthenticationStepDefs.authenticate()));
     }
 
     @Then("the venue search API response status should be {int}")

@@ -1,5 +1,6 @@
 package cat.udl.eps.softarch.fll.domain;
 
+import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import jakarta.persistence.Entity;

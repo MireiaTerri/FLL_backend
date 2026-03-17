@@ -8,7 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.UUID;
 import org.springframework.http.MediaType;
 import com.fasterxml.jackson.databind.JsonNode;
-import cat.udl.eps.softarch.fll.domain.Judge;
+import cat.udl.eps.softarch.fll.domain.volunteer.Judge;
 import cat.udl.eps.softarch.fll.repository.JudgeRepository;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

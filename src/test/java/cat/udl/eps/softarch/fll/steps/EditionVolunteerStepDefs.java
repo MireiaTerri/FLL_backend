@@ -8,9 +8,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.UUID;
 import org.springframework.http.MediaType;
 import cat.udl.eps.softarch.fll.domain.Edition;
-import cat.udl.eps.softarch.fll.domain.Floater;
-import cat.udl.eps.softarch.fll.domain.Judge;
-import cat.udl.eps.softarch.fll.domain.Referee;
+import cat.udl.eps.softarch.fll.domain.volunteer.Floater;
+import cat.udl.eps.softarch.fll.domain.volunteer.Judge;
+import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import cat.udl.eps.softarch.fll.repository.EditionRepository;
 import cat.udl.eps.softarch.fll.repository.FloaterRepository;
 import cat.udl.eps.softarch.fll.repository.JudgeRepository;

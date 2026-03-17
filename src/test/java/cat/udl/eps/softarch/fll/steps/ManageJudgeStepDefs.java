@@ -1,7 +1,6 @@
 package cat.udl.eps.softarch.fll.steps;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
@@ -38,7 +37,7 @@ public class ManageJudgeStepDefs {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(stepDefs.mapper.writeValueAsString(body))
 				.characterEncoding(StandardCharsets.UTF_8)
-				.with(user("user").roles("USER")));
+				.with(AuthenticationStepDefs.authenticate()));
 		
 		saveUrlFromLocationHeader();
 	}
@@ -54,7 +53,7 @@ public class ManageJudgeStepDefs {
 	public void i_request_to_retrieve_that_judge() throws Exception {
 		validateUrlIsPresent();
 		stepDefs.result = stepDefs.mockMvc.perform(get(currentJudgeUrl)
-				.with(user("user").roles("USER")));
+				.with(AuthenticationStepDefs.authenticate()));
 	}
 
 	@When("I request to update the judge name to {string}")
@@ -67,14 +66,14 @@ public class ManageJudgeStepDefs {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(stepDefs.mapper.writeValueAsString(body))
 				.characterEncoding(StandardCharsets.UTF_8)
-				.with(user("user").roles("USER")));
+				.with(AuthenticationStepDefs.authenticate()));
 	}
 
 	@When("I request to delete that judge")
 	public void i_request_to_delete_that_judge() throws Exception {
 		validateUrlIsPresent();
 		stepDefs.result = stepDefs.mockMvc.perform(delete(currentJudgeUrl)
-				.with(user("user").roles("USER")));
+				.with(AuthenticationStepDefs.authenticate()));
 	}
 
 	@Then("the judge API response status should be {int}")

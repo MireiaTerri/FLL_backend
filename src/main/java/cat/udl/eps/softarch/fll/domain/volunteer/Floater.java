@@ -1,5 +1,7 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.volunteer;
 
+import cat.udl.eps.softarch.fll.domain.DomainValidation;
+import cat.udl.eps.softarch.fll.domain.Team;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -39,4 +41,3 @@ public class Floater extends Volunteer {
 		return floater;
 	}
 }
-
