@@ -23,8 +23,6 @@ public class WebSecurityConfig {
 	@Value("${allowed-origins}")
 	String[] allowedOrigins;
 
-	private static final String THREE_LEVEL_PATH = "/*/*/*";
-
 	@Bean
 	protected SecurityFilterChain securityFilterChain(HttpSecurity http) {
 		http.authorizeHttpRequests(auth -> auth
@@ -32,14 +30,10 @@ public class WebSecurityConfig {
 				.requestMatchers(HttpMethod.GET, "/users").authenticated()
 				.requestMatchers(HttpMethod.POST, "/users").anonymous()
 				.requestMatchers(HttpMethod.POST, "/users/*").denyAll()
-				.requestMatchers(HttpMethod.POST, "/*/*").authenticated()
-				.requestMatchers(HttpMethod.PUT, "/*/*").authenticated()
-				.requestMatchers(HttpMethod.PATCH, "/*/*").authenticated()
-				.requestMatchers(HttpMethod.DELETE, "/*/*").authenticated()
-				.requestMatchers(HttpMethod.POST, THREE_LEVEL_PATH).authenticated()
-				.requestMatchers(HttpMethod.PUT, THREE_LEVEL_PATH).authenticated()
-				.requestMatchers(HttpMethod.PATCH, THREE_LEVEL_PATH).authenticated()
-				.requestMatchers(HttpMethod.DELETE, THREE_LEVEL_PATH).authenticated()
+				.requestMatchers(HttpMethod.POST, "/**").hasRole(UserRoles.ADMIN)
+				.requestMatchers(HttpMethod.PUT, "/**").hasRole(UserRoles.ADMIN)
+				.requestMatchers(HttpMethod.PATCH, "/**").hasRole(UserRoles.ADMIN)
+				.requestMatchers(HttpMethod.DELETE, "/**").hasRole(UserRoles.ADMIN)
 				.anyRequest().permitAll())
 				.csrf(csrf -> csrf.disable())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -51,7 +45,7 @@ public class WebSecurityConfig {
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
-		corsConfiguration.setAllowedOrigins(Arrays.asList(allowedOrigins));
+		corsConfiguration.setAllowedOriginPatterns(Arrays.asList(allowedOrigins));
 		corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
 		corsConfiguration.setAllowedHeaders(List.of("*"));
 		corsConfiguration.setAllowCredentials(true);
