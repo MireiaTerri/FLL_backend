@@ -5,12 +5,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.*;
 import java.util.HashMap;
 import java.util.Map;
+import com.jayway.jsonpath.JsonPath;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.springframework.http.MediaType;
-import com.jayway.jsonpath.JsonPath;
 
 public class ManageCoachStepDefs {
 	private final StepDefs stepDefs;
@@ -18,6 +18,14 @@ public class ManageCoachStepDefs {
 
 	public ManageCoachStepDefs(StepDefs stepDefs) {
 		this.stepDefs = stepDefs;
+	}
+
+	private void findAndSetCoachUri(String email) throws Exception {
+		String content = stepDefs.mockMvc.perform(get("/coaches/search/findByEmailAddress?email={email}", email)
+				.with(AuthenticationStepDefs.authenticate()))
+				.andReturn().getResponse().getContentAsString();
+
+		lastCoachUri = JsonPath.read(content, "$._links.self.href");
 	}
 
 	@When("I create a new coach with name {string}, email {string} and phone {string}")
@@ -31,8 +39,6 @@ public class ManageCoachStepDefs {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(stepDefs.mapper.writeValueAsString(payload))
 				.with(AuthenticationStepDefs.authenticate()));
-
-		lastCoachUri = stepDefs.result.andReturn().getResponse().getHeader("Location");
 	}
 
 	@Given("There is a coach with name {string} and email {string}")
@@ -44,9 +50,6 @@ public class ManageCoachStepDefs {
 	public void iRetrieveCoach(String email) throws Exception {
 		stepDefs.result = stepDefs.mockMvc.perform(get("/coaches/search/findByEmailAddress?email={email}", email)
 				.with(AuthenticationStepDefs.authenticate()));
-
-		String content = stepDefs.result.andReturn().getResponse().getContentAsString();
-		lastCoachUri = JsonPath.read(content, "$._links.self.href");
 	}
 
 	@Then("The coach name is {string}")
@@ -79,7 +82,7 @@ public class ManageCoachStepDefs {
 	@When("I delete the coach with email {string}")
 	public void iDeleteCoach(String email) throws Exception {
 
-		iRetrieveCoach(email);
+		findAndSetCoachUri(email);
 
 		stepDefs.result = stepDefs.mockMvc.perform(delete(lastCoachUri)
 				.with(AuthenticationStepDefs.authenticate()));
