@@ -1,4 +1,4 @@
-package cat.udl.eps.softarch.fll.service;
+package cat.udl.eps.softarch.fll.service.match;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +11,7 @@ import cat.udl.eps.softarch.fll.domain.MatchResult;
 import cat.udl.eps.softarch.fll.domain.Team;
 import cat.udl.eps.softarch.fll.repository.match.MatchRepository;
 import cat.udl.eps.softarch.fll.repository.match.MatchResultRepository;
+import cat.udl.eps.softarch.fll.service.ranking.RankingService;
 
 @Service
 public class MatchScoreRegistrationService {

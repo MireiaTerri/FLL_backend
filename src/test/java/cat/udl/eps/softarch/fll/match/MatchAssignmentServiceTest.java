@@ -12,7 +12,7 @@ import cat.udl.eps.softarch.fll.exception.MatchAssignmentException;
 import cat.udl.eps.softarch.fll.repository.match.MatchRepository;
 import cat.udl.eps.softarch.fll.repository.match.RoundRepository;
 import cat.udl.eps.softarch.fll.repository.volunteer.VolunteerRepository;
-import cat.udl.eps.softarch.fll.service.MatchAssignmentService;
+import cat.udl.eps.softarch.fll.service.match.MatchAssignmentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

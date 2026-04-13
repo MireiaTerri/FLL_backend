@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cat.udl.eps.softarch.fll.controller.match.dto.MatchTableAssignmentRequest;
 import cat.udl.eps.softarch.fll.controller.match.dto.MatchTableAssignmentResponse;
-import cat.udl.eps.softarch.fll.service.MatchTableAssignmentService;
+import cat.udl.eps.softarch.fll.service.match.MatchTableAssignmentService;
 import jakarta.validation.Valid;
 
 @RestController

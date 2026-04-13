@@ -7,7 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import cat.udl.eps.softarch.fll.service.EditionTeamRegistrationService;
+import cat.udl.eps.softarch.fll.service.edition.EditionTeamRegistrationService;
 
 @RestController
 public class EditionTeamController {

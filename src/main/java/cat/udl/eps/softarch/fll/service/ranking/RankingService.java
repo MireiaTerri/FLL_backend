@@ -1,4 +1,4 @@
-package cat.udl.eps.softarch.fll.service;
+package cat.udl.eps.softarch.fll.service.ranking;
 
 import cat.udl.eps.softarch.fll.domain.MatchResult;
 import cat.udl.eps.softarch.fll.domain.Ranking;

@@ -1,4 +1,4 @@
-package cat.udl.eps.softarch.fll.service;
+package cat.udl.eps.softarch.fll.service.projectroom;
 
 import cat.udl.eps.softarch.fll.domain.ProjectRoom;
 import cat.udl.eps.softarch.fll.domain.volunteer.Judge;

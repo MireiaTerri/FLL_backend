@@ -7,7 +7,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 import java.util.List;
 
-import cat.udl.eps.softarch.fll.service.EditionVolunteerService;
+import cat.udl.eps.softarch.fll.service.volunteer.EditionVolunteerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

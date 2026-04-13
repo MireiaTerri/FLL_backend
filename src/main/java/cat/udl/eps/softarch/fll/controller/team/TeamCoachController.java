@@ -4,7 +4,7 @@ import cat.udl.eps.softarch.fll.dto.AssignCoachRequest;
 import cat.udl.eps.softarch.fll.dto.AssignCoachResponse;
 import cat.udl.eps.softarch.fll.controller.dto.ApiErrorResponse;
 import cat.udl.eps.softarch.fll.exception.TeamCoachAssignmentException;
-import cat.udl.eps.softarch.fll.service.CoachService;
+import cat.udl.eps.softarch.fll.service.coach.CoachService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

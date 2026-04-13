@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 import java.time.LocalTime;
 import java.util.Optional;
 
-import cat.udl.eps.softarch.fll.service.MatchTableAssignmentService;
+import cat.udl.eps.softarch.fll.service.match.MatchTableAssignmentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

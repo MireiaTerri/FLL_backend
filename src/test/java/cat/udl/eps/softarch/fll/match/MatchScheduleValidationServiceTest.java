@@ -9,7 +9,7 @@ import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 
-import cat.udl.eps.softarch.fll.service.MatchScheduleValidationService;
+import cat.udl.eps.softarch.fll.service.match.MatchScheduleValidationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

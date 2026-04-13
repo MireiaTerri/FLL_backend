@@ -1,4 +1,4 @@
-package cat.udl.eps.softarch.fll.service;
+package cat.udl.eps.softarch.fll.service.edition;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import cat.udl.eps.softarch.fll.controller.edition.dto.EditionCompetitionTableResponse;
 import cat.udl.eps.softarch.fll.controller.edition.dto.EditionTableMatchResponse;
 import cat.udl.eps.softarch.fll.exception.EditionCompetitionTableNotFoundException;
-import cat.udl.eps.softarch.fll.service.EditionCompetitionTableService;
+import cat.udl.eps.softarch.fll.service.edition.EditionCompetitionTableService;
 
 class EditionCompetitionTableControllerTest {
 

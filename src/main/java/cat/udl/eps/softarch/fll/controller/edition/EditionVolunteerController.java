@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cat.udl.eps.softarch.fll.controller.edition.dto.EditionVolunteersResponse;
-import cat.udl.eps.softarch.fll.service.EditionVolunteerService;
+import cat.udl.eps.softarch.fll.service.volunteer.EditionVolunteerService;
 import lombok.RequiredArgsConstructor;
 
 @RestController

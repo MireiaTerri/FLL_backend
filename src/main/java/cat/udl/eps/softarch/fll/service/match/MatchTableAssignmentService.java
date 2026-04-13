@@ -1,4 +1,4 @@
-package cat.udl.eps.softarch.fll.service;
+package cat.udl.eps.softarch.fll.service.match;
 
 import java.time.format.DateTimeFormatter;
 import org.springframework.http.HttpStatus;

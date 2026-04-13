@@ -22,7 +22,7 @@ import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import cat.udl.eps.softarch.fll.exception.MatchAssignmentErrorCode;
 import cat.udl.eps.softarch.fll.exception.MatchAssignmentException;
 import cat.udl.eps.softarch.fll.exception.MatchAssignmentExceptionHandler;
-import cat.udl.eps.softarch.fll.service.MatchAssignmentService;
+import cat.udl.eps.softarch.fll.service.match.MatchAssignmentService;
 
 class MatchAssignmentControllerTest {
 

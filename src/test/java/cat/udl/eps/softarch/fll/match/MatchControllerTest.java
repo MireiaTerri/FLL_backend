@@ -17,7 +17,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.server.ResponseStatusException;
 import cat.udl.eps.softarch.fll.controller.match.dto.MatchTableAssignmentResponse;
 import cat.udl.eps.softarch.fll.exception.GlobalExceptionHandler;
-import cat.udl.eps.softarch.fll.service.MatchTableAssignmentService;
+import cat.udl.eps.softarch.fll.service.match.MatchTableAssignmentService;
 
 class MatchControllerTest {
 

@@ -5,7 +5,7 @@ import cat.udl.eps.softarch.fll.domain.EditionOperation;
 import cat.udl.eps.softarch.fll.domain.EditionState;
 import cat.udl.eps.softarch.fll.exception.EditionLifecycleException;
 import cat.udl.eps.softarch.fll.repository.edition.EditionRepository;
-import cat.udl.eps.softarch.fll.service.EditionLifecycleService;
+import cat.udl.eps.softarch.fll.service.edition.EditionLifecycleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

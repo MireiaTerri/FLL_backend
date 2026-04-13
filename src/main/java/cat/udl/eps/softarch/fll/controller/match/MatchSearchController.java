@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import cat.udl.eps.softarch.fll.dto.MatchSearchItemResponse;
 import cat.udl.eps.softarch.fll.dto.MatchSearchPageResponse;
-import cat.udl.eps.softarch.fll.service.MatchSearchService;
+import cat.udl.eps.softarch.fll.service.match.MatchSearchService;
 import lombok.RequiredArgsConstructor;
 
 @RestController

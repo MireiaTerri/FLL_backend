@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cat.udl.eps.softarch.fll.controller.edition.dto.EditionCompetitionTableResponse;
 import cat.udl.eps.softarch.fll.exception.EditionCompetitionTableNotFoundException;
-import cat.udl.eps.softarch.fll.service.EditionCompetitionTableService;
+import cat.udl.eps.softarch.fll.service.edition.EditionCompetitionTableService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
