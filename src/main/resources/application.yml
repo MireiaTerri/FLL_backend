@@ -3,6 +3,10 @@ spring:
     console:
       enabled: false
 
+server:
+  error:
+    include-message: always
+
 allowed-origins: http://localhost:3000
 default-password: password
 
