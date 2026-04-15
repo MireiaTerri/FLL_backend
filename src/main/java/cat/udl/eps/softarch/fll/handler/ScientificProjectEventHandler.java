@@ -67,7 +67,7 @@ public class ScientificProjectEventHandler {
 			return;
 		}
 
-		if (!teamRepository.existsByIdAndRegisteredEditionsId(project.getTeam().getId(), project.getEdition().getId())) {
+		if (!teamRepository.existsByIdAndEditionId(project.getTeam().getId(), project.getEdition().getId())) {
 			throw new DomainValidationException("EDITION_TEAM_MISMATCH",
 					"The referenced team is not registered in the referenced edition");
 		}

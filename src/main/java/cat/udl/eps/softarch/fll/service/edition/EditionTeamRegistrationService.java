@@ -52,7 +52,8 @@ public class EditionTeamRegistrationService {
 					"Edition " + editionId + " has reached the maximum of " + Edition.MAX_TEAMS + " teams");
 		}
 
-		edition.getTeams().add(team);
-		return editionRepository.save(edition);
+		team.setEdition(edition);
+		teamRepository.save(team);
+		return edition;
 	}
 }
