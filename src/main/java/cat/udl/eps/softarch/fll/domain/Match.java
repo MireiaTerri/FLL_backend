@@ -1,7 +1,6 @@
 package cat.udl.eps.softarch.fll.domain;
 
 import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,7 +39,6 @@ public class Match extends UriEntity<Long> {
 	private Round round;
 
 	@Getter
-	@JsonBackReference("table-matches")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "table_id")
 	private CompetitionTable competitionTable;
