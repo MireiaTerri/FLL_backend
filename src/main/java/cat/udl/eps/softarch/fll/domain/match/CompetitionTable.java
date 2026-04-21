@@ -1,5 +1,6 @@
 package cat.udl.eps.softarch.fll.domain.match;
 
+import cat.udl.eps.softarch.fll.domain.UriEntity;
 import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;

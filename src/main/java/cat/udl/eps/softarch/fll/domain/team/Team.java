@@ -1,5 +1,7 @@
 package cat.udl.eps.softarch.fll.domain.team;
 
+import cat.udl.eps.softarch.fll.domain.UriEntity;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
