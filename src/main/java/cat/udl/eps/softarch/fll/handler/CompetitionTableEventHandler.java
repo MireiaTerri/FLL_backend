@@ -3,7 +3,7 @@ package cat.udl.eps.softarch.fll.handler;
 import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import org.springframework.stereotype.Component;
-import cat.udl.eps.softarch.fll.domain.CompetitionTable;
+import cat.udl.eps.softarch.fll.domain.match.CompetitionTable;
 import cat.udl.eps.softarch.fll.exception.DomainValidationException;
 
 @Component

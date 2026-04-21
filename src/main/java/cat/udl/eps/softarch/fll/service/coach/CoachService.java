@@ -2,8 +2,8 @@ package cat.udl.eps.softarch.fll.service.coach;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import cat.udl.eps.softarch.fll.domain.Coach;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.team.Coach;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import cat.udl.eps.softarch.fll.dto.AssignCoachResponse;
 import cat.udl.eps.softarch.fll.exception.TeamCoachAssignmentException;
 import cat.udl.eps.softarch.fll.repository.team.TeamRepository;

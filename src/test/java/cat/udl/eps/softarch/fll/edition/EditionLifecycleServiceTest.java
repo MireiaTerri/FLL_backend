@@ -1,8 +1,8 @@
 package cat.udl.eps.softarch.fll.edition;
 
-import cat.udl.eps.softarch.fll.domain.Edition;
-import cat.udl.eps.softarch.fll.domain.EditionOperation;
-import cat.udl.eps.softarch.fll.domain.EditionState;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
+import cat.udl.eps.softarch.fll.domain.edition.EditionOperation;
+import cat.udl.eps.softarch.fll.domain.edition.EditionState;
 import cat.udl.eps.softarch.fll.exception.EditionLifecycleException;
 import cat.udl.eps.softarch.fll.repository.edition.EditionRepository;
 import cat.udl.eps.softarch.fll.service.edition.EditionLifecycleService;

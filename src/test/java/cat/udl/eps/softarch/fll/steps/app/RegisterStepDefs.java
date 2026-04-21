@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.nio.charset.StandardCharsets;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
-import cat.udl.eps.softarch.fll.domain.User;
+import cat.udl.eps.softarch.fll.domain.identity.User;
 import cat.udl.eps.softarch.fll.repository.identity.UserRepository;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

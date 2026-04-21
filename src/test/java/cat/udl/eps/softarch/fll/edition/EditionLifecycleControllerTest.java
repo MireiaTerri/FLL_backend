@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import cat.udl.eps.softarch.fll.exception.DomainValidationExceptionHandler;
-import cat.udl.eps.softarch.fll.domain.EditionState;
+import cat.udl.eps.softarch.fll.domain.edition.EditionState;
 import cat.udl.eps.softarch.fll.exception.EditionLifecycleException;
 import cat.udl.eps.softarch.fll.handler.EditionLifecycleExceptionHandler;
 import cat.udl.eps.softarch.fll.service.edition.EditionLifecycleService;

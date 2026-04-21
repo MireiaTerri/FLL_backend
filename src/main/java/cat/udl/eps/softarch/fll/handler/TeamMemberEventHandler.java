@@ -1,6 +1,6 @@
 package cat.udl.eps.softarch.fll.handler;
 
-import cat.udl.eps.softarch.fll.domain.TeamMember;
+import cat.udl.eps.softarch.fll.domain.team.TeamMember;
 import cat.udl.eps.softarch.fll.exception.DomainValidationException;
 import cat.udl.eps.softarch.fll.repository.team.TeamMemberRepository;
 import org.springframework.data.rest.core.annotation.HandleBeforeCreate;

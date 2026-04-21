@@ -1,6 +1,6 @@
 package cat.udl.eps.softarch.fll.steps.edition;
 
-import cat.udl.eps.softarch.fll.domain.CompetitionTable;
+import cat.udl.eps.softarch.fll.domain.match.CompetitionTable;
 import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

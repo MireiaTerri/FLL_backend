@@ -13,7 +13,7 @@ import java.util.random.RandomGenerator;
 import cat.udl.eps.softarch.fll.steps.app.StepDefs;
 import org.springframework.http.MediaType;
 import cat.udl.eps.softarch.fll.config.UserRoles;
-import cat.udl.eps.softarch.fll.domain.ProjectRoom;
+import cat.udl.eps.softarch.fll.domain.project.ProjectRoom;
 import cat.udl.eps.softarch.fll.domain.volunteer.Judge;
 import cat.udl.eps.softarch.fll.repository.volunteer.JudgeRepository;
 import cat.udl.eps.softarch.fll.repository.project.ProjectRoomRepository;

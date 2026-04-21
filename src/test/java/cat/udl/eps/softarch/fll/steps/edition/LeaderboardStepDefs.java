@@ -11,11 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import cat.udl.eps.softarch.fll.steps.app.StepDefs;
 import org.springframework.http.MediaType;
-import cat.udl.eps.softarch.fll.domain.Edition;
-import cat.udl.eps.softarch.fll.domain.Match;
-import cat.udl.eps.softarch.fll.domain.MatchResult;
-import cat.udl.eps.softarch.fll.domain.Round;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
+import cat.udl.eps.softarch.fll.domain.match.Match;
+import cat.udl.eps.softarch.fll.domain.match.MatchResult;
+import cat.udl.eps.softarch.fll.domain.match.Round;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import cat.udl.eps.softarch.fll.repository.edition.EditionRepository;
 import cat.udl.eps.softarch.fll.repository.match.MatchRepository;
 import cat.udl.eps.softarch.fll.repository.match.MatchResultRepository;

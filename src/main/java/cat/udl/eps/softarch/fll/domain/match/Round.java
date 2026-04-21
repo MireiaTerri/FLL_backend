@@ -1,5 +1,7 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.match;
 
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
+import cat.udl.eps.softarch.fll.domain.UriEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

@@ -2,9 +2,9 @@ package cat.udl.eps.softarch.fll.service.edition;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import cat.udl.eps.softarch.fll.domain.Edition;
-import cat.udl.eps.softarch.fll.domain.EditionOperation;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
+import cat.udl.eps.softarch.fll.domain.edition.EditionOperation;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import cat.udl.eps.softarch.fll.exception.EditionLifecycleException;
 import cat.udl.eps.softarch.fll.exception.EditionTeamRegistrationException;
 import cat.udl.eps.softarch.fll.repository.edition.EditionRepository;

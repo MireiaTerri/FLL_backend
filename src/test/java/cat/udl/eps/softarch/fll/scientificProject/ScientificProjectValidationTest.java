@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.scientificProject;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.ScientificProject;
+import cat.udl.eps.softarch.fll.domain.project.ScientificProject;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

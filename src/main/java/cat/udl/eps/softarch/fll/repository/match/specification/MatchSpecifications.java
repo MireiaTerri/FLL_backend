@@ -2,7 +2,7 @@ package cat.udl.eps.softarch.fll.repository.match.specification;
 
 import java.time.LocalTime;
 import org.springframework.data.jpa.domain.Specification;
-import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.domain.match.Match;
 
 public class MatchSpecifications {
 

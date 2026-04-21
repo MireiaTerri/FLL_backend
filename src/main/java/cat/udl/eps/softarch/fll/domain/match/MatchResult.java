@@ -1,5 +1,8 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.match;
 
+import cat.udl.eps.softarch.fll.domain.DomainValidation;
+import cat.udl.eps.softarch.fll.domain.UriEntity;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

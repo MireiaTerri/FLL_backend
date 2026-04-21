@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.User;
+import cat.udl.eps.softarch.fll.domain.identity.User;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

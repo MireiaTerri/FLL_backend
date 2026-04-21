@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.service.ranking;
 
-import cat.udl.eps.softarch.fll.domain.MatchResult;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.match.MatchResult;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

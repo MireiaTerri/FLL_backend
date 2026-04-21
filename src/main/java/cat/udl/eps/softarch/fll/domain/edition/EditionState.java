@@ -1,4 +1,4 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.edition;
 
 public enum EditionState {
 	DRAFT,

@@ -9,9 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
-import cat.udl.eps.softarch.fll.domain.Award;
-import cat.udl.eps.softarch.fll.domain.Edition;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.ranking.Award;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 

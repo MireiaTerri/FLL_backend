@@ -12,7 +12,7 @@ import org.springframework.data.rest.core.annotation.HandleBeforeLinkSave;
 import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import org.springframework.stereotype.Component;
-import cat.udl.eps.softarch.fll.domain.User;
+import cat.udl.eps.softarch.fll.domain.identity.User;
 import cat.udl.eps.softarch.fll.repository.identity.UserRepository;
 
 @Component

@@ -11,7 +11,7 @@ import cat.udl.eps.softarch.fll.steps.app.AuthenticationStepDefs;
 import cat.udl.eps.softarch.fll.steps.app.StepDefs;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
-import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.domain.match.Match;
 import cat.udl.eps.softarch.fll.repository.match.MatchRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

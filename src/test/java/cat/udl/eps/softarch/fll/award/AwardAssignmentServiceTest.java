@@ -9,9 +9,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
-import cat.udl.eps.softarch.fll.domain.Award;
-import cat.udl.eps.softarch.fll.domain.Edition;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.ranking.Award;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import cat.udl.eps.softarch.fll.dto.AssignAwardResponse;
 import cat.udl.eps.softarch.fll.exception.AwardAssignmentException;
 import cat.udl.eps.softarch.fll.repository.ranking.AwardRepository;

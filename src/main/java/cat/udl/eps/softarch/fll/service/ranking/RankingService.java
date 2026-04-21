@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.service.ranking;
 
-import cat.udl.eps.softarch.fll.domain.MatchResult;
-import cat.udl.eps.softarch.fll.domain.Ranking;
+import cat.udl.eps.softarch.fll.domain.match.MatchResult;
+import cat.udl.eps.softarch.fll.domain.ranking.Ranking;
 import cat.udl.eps.softarch.fll.repository.match.MatchResultRepository;
 import cat.udl.eps.softarch.fll.repository.ranking.RankingRepository;
 import java.util.List;

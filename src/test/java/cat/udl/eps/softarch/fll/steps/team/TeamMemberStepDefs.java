@@ -1,6 +1,6 @@
 package cat.udl.eps.softarch.fll.steps.team;
 
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import cat.udl.eps.softarch.fll.repository.team.TeamMemberRepository;
 import cat.udl.eps.softarch.fll.repository.team.TeamRepository;
 import cat.udl.eps.softarch.fll.steps.app.AuthenticationStepDefs;

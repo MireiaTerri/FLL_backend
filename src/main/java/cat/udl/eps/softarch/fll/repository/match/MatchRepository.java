@@ -12,10 +12,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
-import cat.udl.eps.softarch.fll.domain.CompetitionTable;
-import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.domain.match.CompetitionTable;
+import cat.udl.eps.softarch.fll.domain.match.Match;
 import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import jakarta.persistence.LockModeType;
 
 @Repository
@@ -86,7 +86,7 @@ public interface MatchRepository extends
 		JOIN m.round round
 		WHERE round.edition.id = :editionId
 		AND m.competitionTable IS NOT NULL
-		AND m.state = cat.udl.eps.softarch.fll.domain.MatchState.SCHEDULED
+		AND m.state = cat.udl.eps.softarch.fll.domain.match.MatchState.SCHEDULED
 		ORDER BY competitionTable.id, m.startTime, m.id
 		""")
 	@RestResource(exported = false)

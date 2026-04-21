@@ -2,9 +2,9 @@ package cat.udl.eps.softarch.fll.steps.match;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import cat.udl.eps.softarch.fll.domain.CompetitionTable;
-import cat.udl.eps.softarch.fll.domain.Match;
-import cat.udl.eps.softarch.fll.domain.Round;
+import cat.udl.eps.softarch.fll.domain.match.CompetitionTable;
+import cat.udl.eps.softarch.fll.domain.match.Match;
+import cat.udl.eps.softarch.fll.domain.match.Round;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

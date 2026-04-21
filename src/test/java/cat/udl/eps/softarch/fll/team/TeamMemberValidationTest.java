@@ -1,8 +1,8 @@
 package cat.udl.eps.softarch.fll.team;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.Team;
-import cat.udl.eps.softarch.fll.domain.TeamMember;
+import cat.udl.eps.softarch.fll.domain.team.Team;
+import cat.udl.eps.softarch.fll.domain.team.TeamMember;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.edition;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.Venue;
+import cat.udl.eps.softarch.fll.domain.edition.Venue;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

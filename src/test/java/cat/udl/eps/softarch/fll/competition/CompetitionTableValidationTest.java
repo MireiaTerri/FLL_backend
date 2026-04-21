@@ -3,7 +3,7 @@ package cat.udl.eps.softarch.fll.competition;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import cat.udl.eps.softarch.fll.domain.CompetitionTable;
+import cat.udl.eps.softarch.fll.domain.match.CompetitionTable;
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

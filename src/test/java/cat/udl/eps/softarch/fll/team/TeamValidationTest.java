@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.team;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

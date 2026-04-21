@@ -1,6 +1,6 @@
 package cat.udl.eps.softarch.fll.service.projectroom;
 
-import cat.udl.eps.softarch.fll.domain.ProjectRoom;
+import cat.udl.eps.softarch.fll.domain.project.ProjectRoom;
 import cat.udl.eps.softarch.fll.domain.volunteer.Judge;
 import cat.udl.eps.softarch.fll.api.dto.AssignJudgeRequest;
 import cat.udl.eps.softarch.fll.api.dto.AssignJudgeResponse;

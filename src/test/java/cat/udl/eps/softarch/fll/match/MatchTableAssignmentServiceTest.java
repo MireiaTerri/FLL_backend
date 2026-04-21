@@ -18,8 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import cat.udl.eps.softarch.fll.controller.match.dto.MatchTableAssignmentResponse;
-import cat.udl.eps.softarch.fll.domain.CompetitionTable;
-import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.domain.match.CompetitionTable;
+import cat.udl.eps.softarch.fll.domain.match.Match;
 import cat.udl.eps.softarch.fll.repository.match.CompetitionTableRepository;
 import cat.udl.eps.softarch.fll.repository.match.MatchRepository;
 

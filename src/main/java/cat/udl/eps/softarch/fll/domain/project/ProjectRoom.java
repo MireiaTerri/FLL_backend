@@ -1,4 +1,4 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.project;
 
 import java.util.ArrayList;
 import java.util.List;

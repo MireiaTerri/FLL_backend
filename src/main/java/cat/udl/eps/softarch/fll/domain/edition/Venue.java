@@ -1,5 +1,6 @@
-package cat.udl.eps.softarch.fll.domain;
+package cat.udl.eps.softarch.fll.domain.edition;
 
+import cat.udl.eps.softarch.fll.domain.DomainValidation;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

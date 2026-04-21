@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.domain.volunteer;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidation;
-import cat.udl.eps.softarch.fll.domain.Edition;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
 import cat.udl.eps.softarch.fll.domain.UriEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

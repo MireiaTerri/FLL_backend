@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import org.springframework.stereotype.Component;
 import java.util.Objects;
-import cat.udl.eps.softarch.fll.domain.ScientificProject;
+import cat.udl.eps.softarch.fll.domain.project.ScientificProject;
 import cat.udl.eps.softarch.fll.exception.DomainValidationException;
 import cat.udl.eps.softarch.fll.repository.edition.EditionRepository;
 import cat.udl.eps.softarch.fll.repository.team.TeamRepository;

@@ -1,9 +1,9 @@
 package cat.udl.eps.softarch.fll.match;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.Match;
-import cat.udl.eps.softarch.fll.domain.MatchResult;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.match.Match;
+import cat.udl.eps.softarch.fll.domain.match.MatchResult;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

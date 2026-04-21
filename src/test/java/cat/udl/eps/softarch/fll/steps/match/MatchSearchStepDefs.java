@@ -8,10 +8,10 @@ import java.time.LocalTime;
 
 import cat.udl.eps.softarch.fll.steps.app.StepDefs;
 import org.springframework.http.MediaType;
-import cat.udl.eps.softarch.fll.domain.CompetitionTable;
-import cat.udl.eps.softarch.fll.domain.Match;
-import cat.udl.eps.softarch.fll.domain.Round;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.match.CompetitionTable;
+import cat.udl.eps.softarch.fll.domain.match.Match;
+import cat.udl.eps.softarch.fll.domain.match.Round;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import cat.udl.eps.softarch.fll.repository.match.CompetitionTableRepository;
 import cat.udl.eps.softarch.fll.repository.match.MatchRepository;
 import cat.udl.eps.softarch.fll.repository.match.RoundRepository;

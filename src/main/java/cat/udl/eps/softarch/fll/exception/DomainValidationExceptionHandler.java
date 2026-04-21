@@ -7,9 +7,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import cat.udl.eps.softarch.fll.domain.Edition;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice

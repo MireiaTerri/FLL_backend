@@ -3,7 +3,7 @@ package cat.udl.eps.softarch.fll.team;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import cat.udl.eps.softarch.fll.domain.Coach;
+import cat.udl.eps.softarch.fll.domain.team.Coach;
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

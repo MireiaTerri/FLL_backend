@@ -1,8 +1,8 @@
 package cat.udl.eps.softarch.fll.service.ranking;
 
-import cat.udl.eps.softarch.fll.domain.MatchResult;
-import cat.udl.eps.softarch.fll.domain.Ranking;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.match.MatchResult;
+import cat.udl.eps.softarch.fll.domain.ranking.Ranking;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

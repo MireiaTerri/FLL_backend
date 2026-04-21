@@ -1,7 +1,7 @@
 package cat.udl.eps.softarch.fll.media;
 
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.MediaContent;
+import cat.udl.eps.softarch.fll.domain.project.MediaContent;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

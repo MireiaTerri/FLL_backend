@@ -1,9 +1,9 @@
 package cat.udl.eps.softarch.fll.award;
 
-import cat.udl.eps.softarch.fll.domain.Award;
+import cat.udl.eps.softarch.fll.domain.ranking.Award;
 import cat.udl.eps.softarch.fll.domain.DomainValidationException;
-import cat.udl.eps.softarch.fll.domain.Edition;
-import cat.udl.eps.softarch.fll.domain.Team;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
+import cat.udl.eps.softarch.fll.domain.team.Team;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

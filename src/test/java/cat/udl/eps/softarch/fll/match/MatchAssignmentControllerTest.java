@@ -17,7 +17,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import cat.udl.eps.softarch.fll.controller.match.dto.BatchMatchAssignmentItemRequest;
 import cat.udl.eps.softarch.fll.controller.match.dto.BatchMatchAssignmentItemResponse;
 import cat.udl.eps.softarch.fll.controller.match.dto.BatchMatchAssignmentResponse;
-import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.domain.match.Match;
 import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
 import cat.udl.eps.softarch.fll.exception.MatchAssignmentErrorCode;
 import cat.udl.eps.softarch.fll.exception.MatchAssignmentException;

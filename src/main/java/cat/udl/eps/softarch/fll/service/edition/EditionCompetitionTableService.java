@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cat.udl.eps.softarch.fll.controller.edition.dto.EditionCompetitionTableResponse;
 import cat.udl.eps.softarch.fll.controller.edition.dto.EditionTableMatchResponse;
-import cat.udl.eps.softarch.fll.domain.Match;
+import cat.udl.eps.softarch.fll.domain.match.Match;
 import cat.udl.eps.softarch.fll.exception.EditionCompetitionTableNotFoundException;
 import cat.udl.eps.softarch.fll.repository.edition.EditionRepository;
 import cat.udl.eps.softarch.fll.repository.match.MatchRepository;

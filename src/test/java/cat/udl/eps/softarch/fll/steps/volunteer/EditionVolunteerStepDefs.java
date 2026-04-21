@@ -9,7 +9,7 @@ import java.util.UUID;
 import cat.udl.eps.softarch.fll.steps.app.AuthenticationStepDefs;
 import cat.udl.eps.softarch.fll.steps.app.StepDefs;
 import org.springframework.http.MediaType;
-import cat.udl.eps.softarch.fll.domain.Edition;
+import cat.udl.eps.softarch.fll.domain.edition.Edition;
 import cat.udl.eps.softarch.fll.domain.volunteer.Floater;
 import cat.udl.eps.softarch.fll.domain.volunteer.Judge;
 import cat.udl.eps.softarch.fll.domain.volunteer.Referee;
