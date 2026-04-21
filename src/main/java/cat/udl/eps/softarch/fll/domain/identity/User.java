@@ -1,5 +1,6 @@
 package cat.udl.eps.softarch.fll.domain.identity;
 
+import cat.udl.eps.softarch.fll.domain.DomainValidation;
 import cat.udl.eps.softarch.fll.domain.UriEntity;
 import java.util.Collection;
 import org.hibernate.validator.constraints.Length;
