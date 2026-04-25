@@ -12,17 +12,17 @@ class ScientificProjectValidationTest {
 
 	@Test
 	void validConstructionWithScore() {
-		assertDoesNotThrow(() -> ScientificProject.create(85));
+		assertDoesNotThrow(() -> ScientificProject.create(85, "My Project"));
 	}
 
 	@Test
 	void validConstructionWithZeroScore() {
-		assertDoesNotThrow(() -> ScientificProject.create(0));
+		assertDoesNotThrow(() -> ScientificProject.create(0, "My Project"));
 	}
 
 	@Test
 	void invalidConstructionWithNullScore() {
-		assertThrows(DomainValidationException.class, () -> ScientificProject.create(null));
+		assertThrows(DomainValidationException.class, () -> ScientificProject.create(null, "My Project"));
 	}
 
 	@Nested
@@ -31,13 +31,13 @@ class ScientificProjectValidationTest {
 		@Test
 		void negativeScoreThrows() {
 			assertThrows(DomainValidationException.class,
-				() -> ScientificProject.create(-1));
+				() -> ScientificProject.create(-1, "My Project"));
 		}
 
 		@Test
 		void largeNegativeScoreThrows() {
 			assertThrows(DomainValidationException.class,
-				() -> ScientificProject.create(-100));
+				() -> ScientificProject.create(-100, "My Project"));
 		}
 	}
 }

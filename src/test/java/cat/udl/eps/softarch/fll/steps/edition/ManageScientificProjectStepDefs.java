@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
-
 import cat.udl.eps.softarch.fll.steps.app.AuthenticationStepDefs;
 import cat.udl.eps.softarch.fll.steps.app.StepDefs;
 import org.json.JSONObject;
@@ -43,11 +42,13 @@ public class ManageScientificProjectStepDefs {
 	}
 
 	private ResultActions performCreateProject(
+			String name,
 			Integer score,
 			String comments,
 			String teamUri,
 			String editionUri) throws Exception {
 		JSONObject payload = new JSONObject();
+		payload.put("name", name);
 		payload.put("score", score);
 		payload.put("comments", comments);
 		if (teamUri != null) {
@@ -149,68 +150,68 @@ public class ManageScientificProjectStepDefs {
 		}
 	}
 
-	@When("I create a new scientific project with score {int} and comments {string} for team {string} and a valid edition")
-	public void iCreateScientificProjectForTeamAndValidEdition(Integer score, String comments, String teamName) throws Exception {
+	@When("I create a new scientific project with name {string} score {int} and comments {string} for team {string} and a valid edition")
+	public void iCreateScientificProjectForTeamAndValidEdition(String name, Integer score, String comments, String teamName) throws Exception {
 		latestScientificProjectUri = null;
 		String teamUri = ensureTeamExists(teamName);
 		String editionUri = createEdition();
 		registerTeamInEdition(teamUri, editionUri);
-		stepDefs.result = performCreateProject(score, comments, teamUri, editionUri);
+		stepDefs.result = performCreateProject(name, score, comments, teamUri, editionUri);
 		captureLatestProjectUriIfCreated();
 	}
 
-	@When("I create a new scientific project with score {int} and comments {string} without team and with valid edition")
-	public void iCreateScientificProjectWithoutTeamWithValidEdition(Integer score, String comments) throws Exception {
+	@When("I create a new scientific project with name {string} score {int} and comments {string} without team and with valid edition")
+	public void iCreateScientificProjectWithoutTeamWithValidEdition(String name, Integer score, String comments) throws Exception {
 		latestScientificProjectUri = null;
 		String editionUri = createEdition();
-		stepDefs.result = performCreateProject(score, comments, null, editionUri);
+		stepDefs.result = performCreateProject(name, score, comments, null, editionUri);
 		captureLatestProjectUriIfCreated();
 	}
 
-	@When("I create a new scientific project with score {int} and comments {string} without edition and with valid team {string}")
-	public void iCreateScientificProjectWithoutEditionWithValidTeam(Integer score, String comments, String teamName) throws Exception {
+	@When("I create a new scientific project with name {string} score {int} and comments {string} without edition and with valid team {string}")
+	public void iCreateScientificProjectWithoutEditionWithValidTeam(String name, Integer score, String comments, String teamName) throws Exception {
 		latestScientificProjectUri = null;
 		String teamUri = ensureTeamExists(teamName);
-		stepDefs.result = performCreateProject(score, comments, teamUri, null);
+		stepDefs.result = performCreateProject(name, score, comments, teamUri, null);
 		captureLatestProjectUriIfCreated();
 	}
 
-	@When("I create a new scientific project with score {int} and comments {string} and invalid team with valid edition")
-	public void iCreateScientificProjectWithInvalidTeamWithValidEdition(Integer score, String comments) throws Exception {
+	@When("I create a new scientific project with name {string} score {int} and comments {string} and invalid team with valid edition")
+	public void iCreateScientificProjectWithInvalidTeamWithValidEdition(String name, Integer score, String comments) throws Exception {
 		latestScientificProjectUri = null;
 		String editionUri = createEdition();
 		String invalidTeamUri = "non-existing-" + UUID.randomUUID();
-		stepDefs.result = performCreateProject(score, comments, invalidTeamUri, editionUri);
+		stepDefs.result = performCreateProject(name, score, comments, invalidTeamUri, editionUri);
 		captureLatestProjectUriIfCreated();
 	}
 
-	@When("I create a new scientific project with score {int} and comments {string} and invalid edition for team {string}")
-	public void iCreateScientificProjectWithInvalidEdition(Integer score, String comments, String teamName) throws Exception {
+	@When("I create a new scientific project with name {string} score {int} and comments {string} and invalid edition for team {string}")
+	public void iCreateScientificProjectWithInvalidEdition(String name, Integer score, String comments, String teamName) throws Exception {
 		latestScientificProjectUri = null;
 		String teamUri = ensureTeamExists(teamName);
 		String invalidEditionUri = "non-existing-" + UUID.randomUUID();
-		stepDefs.result = performCreateProject(score, comments, teamUri, invalidEditionUri);
+		stepDefs.result = performCreateProject(name, score, comments, teamUri, invalidEditionUri);
 		captureLatestProjectUriIfCreated();
 	}
 
-	@When("I create a new scientific project with score {int} and comments {string} for unregistered team {string}")
-	public void iCreateScientificProjectWithUnregisteredTeam(Integer score, String comments, String teamName) throws Exception {
+	@When("I create a new scientific project with name {string} score {int} and comments {string} for unregistered team {string}")
+	public void iCreateScientificProjectWithUnregisteredTeam(String name, Integer score, String comments, String teamName) throws Exception {
 		latestScientificProjectUri = null;
 		String teamUri = ensureTeamExists(teamName);
 		String editionUri = createEdition();
-		stepDefs.result = performCreateProject(score, comments, teamUri, editionUri);
+		stepDefs.result = performCreateProject(name, score, comments, teamUri, editionUri);
 		captureLatestProjectUriIfCreated();
 	}
 
-	@Given("There is a scientific project with score {int} and comments {string} for team {string} and a valid edition")
-	public void thereIsAScientificProjectForTeamAndEdition(Integer score, String comments, String teamName) throws Exception {
+	@Given("There is a scientific project with name {string} score {int} and comments {string} for team {string} and a valid edition")
+	public void thereIsAScientificProjectForTeamAndEdition(String name, Integer score, String comments, String teamName) throws Exception {
 		String teamUri = ensureTeamExists(teamName);
 		String editionUri = createEdition();
 		registerTeamInEdition(teamUri, editionUri);
 		ResultActions createAction = stepDefs.mockMvc.perform(
 				post("/scientificProjects")
 						.contentType(MediaType.APPLICATION_JSON)
-						.content(new JSONObject().put("score", score).put("comments", comments).put("team", teamUri).put("edition", editionUri).toString())
+						.content(new JSONObject().put("name", name).put("score", score).put("comments", comments).put("team", teamUri).put("edition", editionUri).toString())
 						.characterEncoding(StandardCharsets.UTF_8)
 						.accept(MediaType.APPLICATION_JSON)
 						.with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic("admin", "password")));
@@ -218,8 +219,8 @@ public class ManageScientificProjectStepDefs {
 		latestScientificProjectUri = createAction.andReturn().getResponse().getHeader("Location");
 	}
 
-	@Given("There is a scientific project with score {int} and comments {string} for team {string} in a tracked edition")
-	public void thereIsAScientificProjectInATrackedEdition(Integer score, String comments, String teamName) throws Exception {
+	@Given("There is a scientific project with name {string} score {int} and comments {string} for team {string} in a tracked edition")
+	public void thereIsAScientificProjectInATrackedEdition(String name, Integer score, String comments, String teamName) throws Exception {
 		trackedEditionId = null;
 		String teamUri = ensureTeamExists(teamName);
 		String editionUri = createEdition();
@@ -228,7 +229,7 @@ public class ManageScientificProjectStepDefs {
 		ResultActions createAction = stepDefs.mockMvc.perform(
 				post("/scientificProjects")
 						.contentType(MediaType.APPLICATION_JSON)
-						.content(new JSONObject().put("score", score).put("comments", comments).put("team", teamUri).put("edition", editionUri).toString())
+						.content(new JSONObject().put("name", name).put("score", score).put("comments", comments).put("team", teamUri).put("edition", editionUri).toString())
 						.characterEncoding(StandardCharsets.UTF_8)
 						.accept(MediaType.APPLICATION_JSON)
 						.with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic("admin", "password")));
@@ -318,5 +319,15 @@ public class ManageScientificProjectStepDefs {
 	public void theResponseContainsNProjects(Integer count) throws Exception {
 		stepDefs.result.andExpect(
 				jsonPath("$._embedded.scientificProjects", hasSize(count)));
+	}
+
+	@Then("The response contains name {string}")
+	public void theResponseContainsName(String expectedName) throws Exception {
+		stepDefs.result.andExpect(jsonPath("$.name").value(expectedName));
+	}
+
+	@Then("The response contains comments {string}")
+	public void theResponseContainsComments(String expectedComments) throws Exception {
+		stepDefs.result.andExpect(jsonPath("$.comments").value(expectedComments));
 	}
 }

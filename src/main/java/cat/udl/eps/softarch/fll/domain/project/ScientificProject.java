@@ -16,6 +16,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Getter
@@ -42,11 +43,16 @@ public class ScientificProject extends UriEntity<Long> {
 	@JsonIdentityReference(alwaysAsId = true)
 	private Edition edition;
 
-	public static ScientificProject create(Integer score) {
+	@NotBlank
+	private String name;
+
+	public static ScientificProject create(Integer score, String name) {
 		DomainValidation.requireNonNegative(score, "score");
+		DomainValidation.requireNonBlank(name, "name");
 
 		ScientificProject project = new ScientificProject();
 		project.score = score;
+		project.name = name;
 		return project;
 	}
 }
