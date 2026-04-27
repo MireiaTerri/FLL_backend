@@ -146,6 +146,16 @@ public class TeamEditionRegistrationStepDefs {
 		stepDefs.result.andExpect(jsonPath("$.message").isNotEmpty());
 	}
 
+	@Given("Team {string} is already registered in another edition")
+	@Transactional
+	public void teamIsAlreadyRegisteredInAnotherEdition(String teamName) {
+		Edition otherEdition = Edition.create(2024, "Barcelona", "FLL 2024");
+		otherEdition = editionRepository.save(otherEdition);
+		Team team = teamRepository.findById(teamName).orElseThrow();
+		team.setEdition(otherEdition);
+		teamRepository.save(team);
+	}
+
 	private Long currentEditionId() {
 		String uri = manageEditionStepDefs.editionUri;
 		return Long.parseLong(uri.substring(uri.lastIndexOf('/') + 1));

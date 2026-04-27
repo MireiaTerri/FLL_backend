@@ -83,3 +83,14 @@ Feature: Team Edition Registration
     Then The response code is 422
     And The response has error "EDITION_OPERATION_NOT_ALLOWED"
     And The response has a non-empty message
+
+	@BusinessRules
+	Scenario: Cannot register a team already registered in another edition
+		Given There is an edition with year 2025, venue "Igualada" and description "FLL 2025"
+		And The current edition is in state "OPEN"
+		And There is a team named "LegoStars" from "Igualada" with category "Challenge"
+		And Team "LegoStars" is already registered in another edition
+		When I register team "LegoStars" to the current edition
+		Then The response code is 409
+		And The response has error "TEAM_ALREADY_IN_ANOTHER_EDITION"
+		And The response has a non-empty message
